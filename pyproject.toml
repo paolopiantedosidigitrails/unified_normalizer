@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "unified-normalizer"
+version = "0.1.0"
+description = ""
+authors = ["Paolo Piantedosi <paolo.piantedosi@digitrails.com>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "3.10.12"
+numpy = "^1.26.3"
+pytest = "^8.0.0"
+sentence-transformers = "^2.3.0"
+pymilvus = "^2.3.6"
+openai = "0.28"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.0.post1"
+rwkv = "^0.8.25"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

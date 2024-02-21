@@ -1,0 +1,35 @@
+skill_raw;observations;skill_normalized;possible_domains;possible_fields;type_of_skill;too_generic
+Pipeline Operations;a pipeline could be both a real hydraulic pipeline and an informational one;Pipeline Operations;Hydraulic Engineering, Information Technology;Engineering, Information Technology;Hard;0
+Data Room;most data rooms nowadays are just pieces of software, physical data rooms are extremely rare;Data Room;Data Management;Information Technology;Hard;0
+WordPress;WordPress is a web development tool;WordPress;Web Development;Information Technology;Hard;0
+job advertisements; this skill has two parts, marketing and HR;Recruitment Advertising;Recruitment, Advertising;Human Resources, Marketing;Soft;0
+2ε;difficult skill to normalize, since 2ε is a version of LaTeX we will normalize it in that way;LaTeX;Markup Language;Information Technology;Hard;0
+employment practices;the knowledge of labor law;Labor Law Knowledge;Labor Law;Human Resources;Soft;0
+ability to lead and supervise a team of technicians; the ability to lead a team;Team Leadership;Team Management;Human Resources;Soft;0
+SOP’s;SOP is an acronym, that probability stands for Standard Operating Procedures;Standard Operating Procedures;Business Management;Business Management;Soft;0
+A&H;A&H is an acronym that stands for Allen & Heath, a company that produces audio mixing equipment;Mixing consoles;Audio Equipment;Miusic;Hard;0
+Hilfsassistentin - Institute of Marketing and Business Management;Hilfsassistentin is a German word that stands for assistant;Assistant;Business Management;Business Management;Soft;0
+Vendite;Vendite is an Italian word that stands for sales;Sales;Sales;Sales;Soft;0
+Stochastic Modelling;Stochastic Modelling is a statistical skill;Stochastic Modelling;Statistics;Mathematics;Hard;0
+plant startup and shutdown;this probably refers to experience in the startup and shutdown of industrial plants;Plant Startup and Shutdown;Plant Operations;Operations Management;Hard;0
+patent offices;this skill probably refers to the knowledge of patent law;Patent Law;Intellectual Property and Copyright Law;Legal;0
+results driven;too generic;Result Driven;Mental Skills;Personal Skills;Soft;1
+Technical Report Writing;the ability to write technical reports is a form of comunication;Technical Report Writing;Written Communication;Communication;Soft;0
+Patent Law;Patent Law is a legal skill;Patent Law;Intellectual Property and Copyright Law;Legal;0
+professional ethics;too generic;Professional Ethics;Mental Skills;Personal Skills;Soft;1
+written communication;this skill is a form of communication;Written Communication;Written Communication;Communication;Soft;0
+computer software;too generic, but is related to informatics;Computer Software;Computer Skills;Information Technology;Hard;1
+goal orientation;too generic;Result Driven;Mental Skills;Personal Skills;Soft;1
+ReSharper;ReSharper is a visual studio extesion for software development;ReSharper;Software Development;Information Technology;Hard;0
+63 Licenses;the Series 63 is a securities exam and license;Series 63;Financial Securities;Financial Services;Hard;0
+lift 50 lbs. on a daily continuous basis;a physical skill;Physical Strenght;Physical Skills;Personal Skills;Hard;0
+production supervisor;the ability to supervise a production line;Production Supervision;Production Management;Operations Management;Soft;0
+asset protection;the knowledge of how to protect financial assets from bankruptcy;Asset Protection;Financial Security;Financial Services;Soft;0
+fluent italian;the ability to speak italian;Italian Language;Language Skills;Personal Skills;Soft;0
+Customer Persuasion;probably related to sales;Sales;Sales;Sales;Soft;0
+steel cutting;probably related to metalworking;Steel Working;Metalworking;Manufacturing;Hard;0
+business analyst;business analysis is the process of using data to make business decisions;Business Analysis;Business Analysis;Business Management;Hard;0
+Road Driving;the ability to drive a car;Driver License Ability;Transportation;Personal Skills;Soft;0
+Trending Topics;the ability to identify trending topics;Trending Topics;Social Media;Marketing;Soft;0
+Price Monitoring;the ability to monitor prices;Price Monitoring;Market Analysis;Business Management;Soft;0
+clean tech;any process, product, or service that reduces negative environmental impacts;Clean Technology;Environmental Technology;Environmental Services;Hard;0

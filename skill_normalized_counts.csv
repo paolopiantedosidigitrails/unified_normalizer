@@ -1,0 +1,789 @@
+skill_normalized,too_generic
+People Management,0
+Operations Management,0
+Energy Management,0
+Communication,0
+Accounting,0
+Product Management,0
+Sales,0
+Software Development,0
+Financial Services,0
+Legal Counseling,0
+Customer Relationship Management,0
+Brand Marketing,0
+Business Management,0
+Graphic Design,0
+Health and Safety,0
+Business Analysis,0
+Project Management,0
+Sustainability,0
+Computer Science,0
+Customer Support,0
+Maintenance,0
+Electrical Wiring,0
+Flexibility,0
+Business Strategy,0
+Security Protocols,0
+Reporting,0
+IT Operations & Management,0
+Market Research,0
+Web Development,0
+Physical Endurance and Skills,0
+Business Development,0
+Power Engineering,0
+Process Management,0
+Cybersecurity,0
+Marketing Management,0
+SAP,0
+Data Analysis,0
+Automotives,0
+Quality Control,0
+Digital Marketing,0
+Inventory Management,0
+Business Process,0
+Problem Solving,0
+Microsoft Office,0
+Auditing,0
+Driver License Ability,0
+Rigid Vehicles,0
+Java,0
+Business Planning,0
+Data Management,0
+Retail,0
+Advertising,0
+Luxury Management,0
+Social Media Marketing,0
+Teamwork,1
+Manufacturing,0
+Chemistry,0
+Workplace Policy Conduct,0
+Budgeting,0
+Apparel and Fashion Design,0
+Risk Management,0
+Procurement,0
+Naval Engineering,0
+Talent Acquisition and Recruitment,0
+Network Administration,0
+MEP Engineering,0
+Data Analytics,0
+Electronics,0
+Economics,0
+Database Administration,0
+Telecommunications,0
+Proactivity,1
+Mechanics,0
+Construction,0
+Resilience,1
+Work Ethic,1
+Oil and Gas Management,0
+Well Educated,1
+Engineering,1
+Waste Management,0
+Industrial Engineering,0
+Environmental Science,0
+Cost Analysis,0
+Time Management,1
+Structural Engineering,0
+Computer Programming,0
+Training,0
+PPE Management,0
+User Experience Design,0
+Product Development,0
+Cloud-Computing,0
+Corporate Governance,0
+Biochemistry,0
+International Relations,0
+Intellectual Property and Copyright Law,0
+Performance Analysis,0
+Entrepreneurship,0
+Leadership,0
+SQL,0
+HR Analytics,0
+Supply Chain Management,0
+Innovation,0
+Good Attitude,1
+Result Driven,1
+Benefits Administration,0
+Financial Analysis,0
+Team Management,0
+English,0
+Interpersonal Skills,0
+Mechanical Engineering,0
+Python,0
+Business Administration,0
+Corporate and Business Law,0
+Employee Training and Development,0
+Trading,0
+Microsoft Windows,0
+Test-Driven Development,0
+Research,0
+Management,0
+Data Collection,0
+Tech Savvy,1
+Statistics,0
+Data Science,0
+Event Planning,0
+Traveling,0
+Tire Maintenance,0
+Consumer Behavior Analysis,0
+New Business,1
+Organizational Skills,0
+Experienced,0
+Backup Management,0
+Algorithms,0
+Mathematics,0
+Typography,0
+International Trading,0
+Calculus,0
+Performance Marketing,0
+Copywriting,0
+DevOps,0
+HR,0
+Account Management,0
+Materials Management,0
+Microcontrollers,0
+Federal and State Law,0
+.NET,0
+Photography,0
+Italian,0
+Regulatory Compliance Law,0
+System Administration,0
+Marketing,0
+Civil Engineering,0
+Content Marketing,0
+Healthcare Administration and Management,0
+Labor Law Supervision,0
+Analytical Skills,0
+Productivity,1
+Web Design,0
+Merchandising,0
+Materials Engineering,0
+Corporate Finance,0
+Finance,0
+CAD,0
+Attention to Detail,1
+Machine Learning,0
+Automation,0
+Translation,0
+AutoCAD,0
+Negotiation,0
+AWS,0
+Tax Analyst,0
+Food and Beverages Management,0
+Autodesk Suite,0
+Microsoft Excel,0
+Creativity,0
+Clothing Industry Process,0
+Microsoft Azure,0
+Teaching and Classroom Instruction,0
+Accountability,1
+Fuel Distribution and Logistics,0
+Photo Editing,0
+Product Design,0
+Technician,1
+Passionate,1
+Journalism,0
+E-Commerce Management,0
+Microsoft Dynamics,0
+Delivery Process,0
+Warehouse Management,0
+Publishing,0
+Android Development,0
+Affiliate Marketing,0
+Decision Making,0
+ArcGIS,0
+Environmental Engineering,0
+Healthcare and Medical Services,0
+Autonomy,1
+JavaScript,0
+Critical Thinking,1
+Order Processing,0
+Brand Design,0
+Data Visualization,0
+R Programming Language,0
+Diversity and Inclusion Initiatives Training,0
+B2B Marketing,0
+Data Privacy Compliance and Regulations Law,0
+Survey Design,0
+Food Safety,0
+Concept Design,0
+Physics,0
+Big Data,0
+Prioritization Skills,1
+REST APIs,0
+Simulations,0
+Art,0
+Traffic Directing,0
+Chemical Engineering,0
+Qualified,1
+Public Relations,0
+Fleet Maintenance,0
+R&D,0
+Microsoft PowerPoint,1
+Spanish,0
+Digital Awareness,1
+Logistics,0
+Active Directory,0
+Aerospace Engineering,0
+Hydraulic System Maintenance ,0
+Fashion Styling and Personal Shopping,0
+Politics,0
+Mergers & Acquisitions,0
+Hotel Management and Operations,0
+Chinese,0
+Public International Law,0
+Business Intelligence,0
+Petroleum Engineering,0
+Food Science,0
+SEO,0
+Hospitality Customer Service,0
+Water Treatment Plant Maintenance,0
+ISO 14001,0
+Personal Care,0
+Frontend Development,0
+APIs,0
+Textile Manufacturing and Production,0
+Mobile Devices Development,0
+Electrochemical Characterization,0
+Virtual Machines,0
+Microsoft SQL Server,0
+Naval Management,0
+Influencing Skills,0
+ASP.NET,0
+HSEQ,0
+Music Publishing,0
+Industrial Planning,0
+Sports Marketing,0
+Linux,0
+Medical Advice,0
+Jboss,0
+OT,0
+Bidding,0
+Sustaintability,0
+Employment and Labor Law,0
+Environmental Chemistry,0
+Military Service,0
+Tableau,0
+Social Media Management,0
+Psychology,0
+AI,0
+Video Production,0
+History,0
+jQuery,0
+Multitasking,0
+C++,0
+Computer Hardware Maintenance,0
+Product Marketing,0
+Salesforce,0
+Nutrition and Dietary Consulting,0
+Consultancy,1
+VBA,0
+Biology,0
+Administrative Assistance,0
+Culinary Arts and Professional Cooking,0
+User-Centered Design,0
+Talend,1
+Consolidation,1
+Oracle,0
+E-Learning and Educational Technology,0
+E-Mail Marketing,0
+Microsoft Word,1
+Portuguese,0
+Pharmacology,0
+Keyword Research,0
+VR,0
+Network Building,0
+Pedagogy and Teaching Methods,0
+IDE,0
+Music,0
+Mobile Applications,0
+Diving,0
+Call Center Management,0
+Military Occupational Specialties,0
+Environmental and Regulatory Law,0
+Change Management,0
+Physical Training,0
+Windows Server,0
+Microsoft Visual Studio,0
+Entertainment,0
+Data Engineering,0
+Computational Chemistry,0
+Textile Knitting,0
+Meteorology,0
+Microsoft Outlook,0
+Architecture,0
+Cognos,0
+French,0
+Software & Hardware Retailing,0
+VMware,0
+Fashion Design,0
+Table Service and Waitstaff Skills,0
+Docker,0
+Immigration Law and Visa Services,0
+Matlab,0
+Adobe,0
+Angular,0
+CMS,0
+Adobe Creative Suite,0
+Tourism Management,0
+Makeup Artistry and Application,0
+Demand Forecasting,0
+CSS,0
+Real Estate and Property Law,0
+Restaurant Industry Management,0
+Early Childhood Education and Preschool Teaching,0
+German,0
+3D Studio Max,0
+Quality Management System,0
+1-Wire,0
+TensorFlow,0
+PLC,0
+Beauty Retail and Sales,0
+Sound Engineering,0
+Science,0
+Resillience,0
+Robotics,0
+Cisco Systems,0
+RTO Pricing,0
+Lead Generation,0
+LaTeX,0
+Investor Relations,0
+Google Suite,0
+Characterization,1
+Strategic Management,0
+Service Industry,0
+Agriculture,0
+Google Ads,0
+Wireframing,0
+Business Coaching,0
+Operational Deployment Process,0
+Backend Development,0
+FMCG,0
+Clang,0
+Visual Communication,0
+Fashion Marketing and PR,0
+Arabic,0
+Tennis,0
+Wine and Beverage Expertise,0
+Usability Testing,0
+Workforce Planning,0
+Empathy,0
+Data Storage,0
+Wedding Planning,0
+Subsea Operations,0
+Microsoft Access,0
+Data Mining,0
+Clerical Process,0
+Banana Accounting,0
+SAP Finacial Services,0
+Rehabilitation,0
+Japanese,0
+Technical Writing,0
+HTML,0
+Audio Mixing,0
+PostgresSQL,0
+Data Manipulation,0
+Zeplin,0
+ERP,0
+Russian,0
+Climatology,0
+Microsoft PowerShell,0
+Cryptocurrency,0
+Qlik Suite,0
+Physical Education,0
+Unified Model Language,0
+NoSQL,0
+Optics & Lens,0
+Web Applications,0
+C#,0
+Adobe Lightroom,0
+Packaging,0
+SCADA,0
+Drilling and Well Operations,0
+POS Design,0
+Service Change,1
+Signal Processing,0
+Microsoft Power BI,0
+Sports Administration,0
+SAP Concur,0
+Electromechanical Engineering,0
+Industrial Design,0
+Google Tag Manager,0
+Health And Safety,0
+Restaurant and Food Service Management,0
+Thai,0
+Apache Cordova,0
+Health and safety,0
+ISO 16949,0
+CanOE,0
+HR Policy Development and Documentation,0
+Sketch,0
+PyTorch,0
+Modaris,0
+SPSS,0
+Rhinoceros,0
+Microsoft VB,0
+Software Maintenance,0
+Qlik Sense,0
+Wireless Technologies,0
+Cucumber-JVM,0
+Reputation Management,0
+STATA,0
+Adobe InDesign,0
+Scikit,0
+MongoDB,0
+Food Safety and Regulatory Compliance,0
+Change Management and Organizational Development,0
+Quantum Mechanics,0
+Ansible,0
+SolidWorks,0
+RPA Developer,0
+Dashboard Design,0
+2020 Design Live,0
+Bartending,0
+Wine Tasting,0
+Primavera,0
+Mentoring,0
+Mac Applications,0
+Full-Stack Development,0
+Apache Airflow,0
+Film Editing and Production Design,0
+Blender,0
+Screening,0
+Google Webmaster Tools,0
+Film Producing and Executive Production,0
+HR Technology and Systems,0
+Counceling,0
+Fault Diagnosis,0
+Public Services,0
+Medicinal Chemistry,0
+ServiceNow,0
+HAZOP,0
+Cosmetic Product Development and Formulation,0
+Apache HTTP Server,0
+Vue.js,0
+Google Cloud Platform,0
+Community Management,0
+React,0
+Data Entry,0
+Electrotechnical,0
+Adobe Photoshop,0
+Google Analytics,0
+Microsoft SRM,0
+CRO,0
+20-20 CAP Studio,0
+Personal Training,0
+Digital Merchandising,0
+Kaizen,0
+Adobe Illustrator,0
+Goods Procurement,0
+Blogging,0
+Apache Kafka,0
+Julia,0
+SAP HANA,0
+Spark,0
+Bash,0
+WordPress,0
+VCenter,0
+Adobe Omniture,0
+ISO 50001,0
+GitLab,0
+Microsoft Assembler,0
+Screenprinting,0
+A/B Testing,0
+ReSharper,0
+Strategy Design,0
+Beauty Trends and Editorial Makeup,0
+Microsoft Virtualization,0
+Business and Finance,0
+Agricultural Engineering,0
+Prolog,0
+Google Data Studio,0
+Prestashop,0
+System Engineering,0
+VDI,0
+Server Administration,0
+Medical Laboratory and Diagnostic Testing,0
+Investigations,0
+Party Logistics,0
+Microsoft Power Apps,0
+Microsoft Hyper-V,0
+Microsoft Power Platform,0
+Apache Foundation,0
+Data science,0
+Geography,0
+KNIME,0
+Hydraulic Engineering,0
+Environmental Legislation,0
+Microsoft Teams,0
+Feature Engineering,0
+Virtual Reality,0
+PyCharm,0
+Northeast,0
+Microsoft Facility Management,0
+Organization Skill,0
+Organizational Control,0
+Adobe Acrobat,0
+Questionnaire,0
+1Password,0
+Apache Tiles,0
+Serbian,0
+Red Hat Enterprise Linux,0
+Crafting,0
+On-Premises Servers,0
+Google Chrome,0
+Weebly,0
+Cisco Webex,0
+Catalan,0
+DevExpress,0
+Firefighting and Fire Prevention,0
+Comics Editing,0
+Adobe XD,0
+LOPA,0
+Apache Spark,0
+Scientific Writing,0
+Genetics,0
+AIX,0
+Social Science,0
+Online Research,1
+Google Optimize,0
+vSphere,0
+Dynamics NAV,0
+Canva,0
+Written Communication,0
+ICS,0
+Kitchen Management,0
+Fortran,0
+SAP Tax,0
+Audio Editing,0
+Ubuntu,0
+UR5,0
+Promotion Analysis,0
+Travel Insurance,0
+Xcode,0
+Branch Accounting,0
+Microsoft VSphere,0
+Windows Communication Foundation,0
+SAP SuccessFactors,0
+Elasticsearch,0
+Videogame Development,0
+Nginx,0
+Organic Synthesis,0
+Desktop Publishing,0
+Magnetic Resonance,0
+Obstetrics and Gynecology,0
+Political Science,0
+NX,0
+Renewable Energy Development,0
+Biostatistics,0
+GAMS,0
+Stress Testing,0
+Human Capital Management,0
+Mozilla Firefox,0
+ABBYY FineReader,0
+LinkedIn Sales Navigator,0
+Apache Pig,0
+NeuroSolutions,0
+HR Practices and Professional Standards,0
+VM Administration,0
+Pragmatic,1
+SAP Data Management,0
+Apache Storm,0
+Swiss German,0
+Biotechnology,0
+MiniTab,0
+MacroModel,0
+Labor Law and Employment Regulations,0
+Adobe Bridge,0
+Google+,0
+Windows Script Host,0
+Proofreading,0
+Customer Alignment Process,0
+VRay,0
+Business Agility,0
+field,1
+Workday,1
+Industrial Mechanics,0
+480interactive,0
+Rubber and Plastic Technology,0
+HighRadius,0
+GIMP,0
+Apache Camel,0
+Microsoft Cognitive Toolkit,0
+Gaussian,1
+Carpentry,0
+Adobe Premiere Pro,0
+Dentistry,0
+IBM DB2,0
+Cooking,0
+Skit,0
+Microsoft SCCM,0
+Apache FOP,0
+LSTM,0
+SketchUp,0
+Joomla,0
+Apache NiFi,0
+Pandas,0
+GaussView,0
+Collection Development,0
+Slack,0
+Korean,0
+Digital Forensics,0
+FiT,0
+Terraform,0
+Television,0
+Figma,0
+OHSAS 18001,0
+Microsoft Waiterio,0
+Interior Design,0
+innovation,1
+CILT,0
+Locksmithing,0
+Regex,0
+Mnova,0
+XCFrameworks,0
+ANTLR,0
+ECMAScript,0
+Open Database Connectivity,0
+Research Design,0
+37signals,0
+Apache ZooKeeper,0
+Interaction Design,0
+Dreamweaver,0
+ANSYS,0
+Film Animation and Visual Effects,0
+JD Edwards,0
+Microsoft DC,0
+Maestro,0
+Microsoft WSUS,0
+Apache Ant,0
+Adobe Ariba,0
+Microsoft Intune,0
+PHP,0
+Adobe Cinema 4D,0
+Magento,0
+Microsoft Mulesoft,0
+Adobe Canva,0
+Biomedical Engineering,0
+Intercultural Mediation,0
+Theology,0
+PostgreSQL,0
+DDL,0
+Authoring Tools,0
+Common Lisp,0
+Lync,0
+Retail Cashier,0
+YouTube,0
+Microsoft Sage Intacct,0
+Microsoft R,0
+Adobe SolidWorks,0
+Travel and Tourism Services,0
+Health and Dentistry and Oral Health,0
+Microsoft Active Directory,0
+Surveillance,0
+Oracle E-Business Suite,0
+Mobile Design,0
+Nuclear Engineering,0
+Microsoft Sharepoint,0
+Angular PrimeNG,0
+Subtitling,0
+ACDSee,0
+Web 2.0,0
+Purchase Manager,0
+Travel Management,0
+Subsea7,0
+Microsoft VDI,0
+Apache Cassandra,0
+Catering and Event Planning,0
+Communication Strategy and Planning,0
+Amazon SQS,0
+Relaxation Techniques,0
+Apache CXF,0
+Process Parameters,0
+Amazon EC2,0
+Research Management,0
+3DEqualizer,0
+Audio Engineering,0
+Rural Engineering,0
+Apache,0
+Swedish,0
+Webtrekk,0
+Microsoft Bluebeam,0
+Slovak,0
+Keras,0
+Music Production,0
+Steward,0
+Marvelapp,0
+IACS,0
+Django,0
+Apache Ivy,0
+Medical Process,0
+Microsoft Powerpoint,1
+Microsoft Ads,0
+Epidemiology,0
+Git,0
+Prioritizazion,1
+Apache Commons,0
+AFT Fathom,0
+Simulink,0
+Canoeing,0
+Nuclear Chemistry,0
+Artifactory,0
+Geopolitics,0
+Microsoft MEM,0
+Microsoft Visio,0
+Apache Velocity,0
+ANN,0
+Adobe Pymol,0
+Journey Management,0
+Root Cause Analysis,0
+Apache Derby,0
+Mobile Marketing,0
+Teaching,0
+Neo4j,0
+Field Service Engineer,0
+Biometrics,0
+Volunteering,1
+Hungarian,0
+MNova,0
+Adobe Figma,0
+Transliteration,0
+Traceability Systems,0
+TurboCAD,0
+Apache Tomcat,0
+PayPal,0
+Nielsen Media,0
+Microbiology,0
+business Planning,0
+Dart,0
+Link Building,0
+Oracle SQL Developer,0
+ADINA,0
+Kotlin,0
+Microsoft Suite,0
+Internet Explorer,0
+Reliability Engineering,0
+Mailchimp,0
+Apache Mesos,0
+Neuroscience,0
+Apache MyFaces Tomahawk,0
+Microsoft Service Now,0
+AMPL,0
+Adobe Dreamweaver,0
+Microsoft IIS,0
+MES,0
+IBM AS/400,0
+Galileo,0
+Painting,0
+Microsoft MCAD,0
+Energy management,0
+Digital Literacy,1
+Market Share,0
+Drupal,0
+Tagetik,0
+Project management,0
+Directing and Film Direction,0
+CUDA,0
+Computer Engineering,0
+Airport Management,0
+IIS,0
