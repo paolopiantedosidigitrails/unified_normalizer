@@ -49,10 +49,10 @@ def normalization(normalization_type: str,
                   threshold_verified_reject: float = TRESHOLD_CANDIDATE_ACCEPT):
     """
     This endpoint normalizes the input string and returns the normalized string
-     * param normalization_type: The type of normalization to be used, the available types are: skill, job, language
-     * param name: The string to be normalized
-     * param threshold_verified_accept: The threshold to accept the normalized string as verified
-     * param threshold_verified_reject: The threshold to reject the normalized string as candidate
+     * path_param normalization_type: The type of normalization to be used.
+     * query_param name: The string to be normalized
+     * query_param threshold_verified_accept: The threshold to accept the normalized string as verified
+     * query_param threshold_verified_reject: The threshold to reject the normalized string as candidate
      ---
      * return: The normalized string, some additional information on the normalized string and some information on the normalization process
     """
@@ -60,11 +60,23 @@ def normalization(normalization_type: str,
         raise HTTPException(status_code=404,
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
     normalizer = ml_models[f"{normalization_type}"]
-    return normalizer.normalize(name, threshold_verified_accept, threshold_verified_reject)
+    norm, add_info, notes, norm_info = normalizer.normalize(name, threshold_verified_accept, threshold_verified_reject)
+    return {"normalized_string": norm, "additional_info": add_info, "notes": notes, "normalization_info": norm_info}
 
 @app.get("/check_normalized/{normalization_type}/")
 async def check_normalized(normalization_type: str, norm_string: str, accepted: bool = False):
-
+    """
+    This endpoint checks if a normalized string is present in the previously verified or candidate normalizations.
+     * path_param normalization_type: The type of normalization to be used.
+     * query_param norm_string: The normalized string to be checked
+     * query_param accepted: A boolean value to check if the normalized string must be searched in the verified collection or in the candidates collection
+    ---
+     * return: A JSON with this format:
+        {
+          "exists": boolean value indicating if the normalized string is present in the collection, 
+          "result": the result of the search
+          }
+    """
     if normalization_type not in ml_models:
         raise HTTPException(status_code=404,
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
@@ -83,6 +95,20 @@ async def vector_search(normalization_type: str,
                         limit: int = 1,
                         accepted: bool = False,
                         search_normalized: bool = False):
+    """
+    This endpoint performs a vector search on a the space of previously normalized strings.
+     * path_param normalization_type: The type of normalization to be used.
+     * query_param string_to_search: The string to be searched in the collection
+     * query_param limit: The maximum number of results to return
+     * query_param accepted: A boolean value to choose if the search must be in the verified collection or in the candidates collection
+     * query_param search_normalized: A boolean value used to choose if the search must be performed on the normalized strings or on both the raw strings and the normalized strings
+    ---
+     * return: A JSON with this format:
+        {
+          "results": list of results from the search, 
+          "distances": list of distances of the results from the search string
+          }
+    """
     if normalization_type not in ml_models:
         raise HTTPException(status_code=404,
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
@@ -100,12 +126,46 @@ async def vector_search(normalization_type: str,
 
 @app.get("/get_embedding/{normalization_type}/")
 async def get_embedding(normalization_type: str, word: str):
+    """
+    This endpoint retrieves the embedding of a word.
+     * path_param normalization_type: The type of normalization to be used.
+     * query_param word: The word to get the embedding of.
+    ---
+     * return: A JSON with this format:
+        {
+          "embedding": list of floats representing the word embedding
+        }
+    """
     if normalization_type not in ml_models:
         raise HTTPException(status_code=404, 
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
     normalizer = ml_models[f"{normalization_type}"]
     embedding = normalizer.get_word_embedding(word)
     return {"embedding": embedding.tolist()}
+
+
+@app.get("/cosine_similarity/{normalization_type}/")
+async def cosine_similarity(normalization_type: str, input1: str, input2: str):
+    """
+    This endpoint calculates the cosine similarity between two strings.
+        * path_param normalization_type: The type of normalization to be used.
+        * query_param input1: The first string to be compared
+        * query_param input2: The second string to be compared
+    ---
+        * return: A JSON with this format:
+            {
+              "similarity": float value representing the cosine similarity between the two strings
+            }
+    """
+
+    
+    if normalization_type not in ml_models:
+        raise HTTPException(status_code=404, 
+                            detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
+    normalizer = ml_models[f"{normalization_type}"]
+    similarity = float(normalizer.cosine_similarity(input1, input2))
+    return {"similarity": similarity}
+
 
 
 if __name__ == "__main__":

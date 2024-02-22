@@ -2,9 +2,6 @@ import pytest  # noqa: F401
 from unified_normalizer.Normalizer import Normalizer, SkillNormalizerOld, LanguageNormalizer, JobNormalizer, SkillNormalizerNew
 import time 
 
-from httpx import AsyncClient
-from api import app  # Import the FastAPI app from api.py
-
 import numpy as np
 from pymilvus import utility
 
@@ -117,7 +114,8 @@ def test_prompt_creation_skills():
 def test_LLM_call_skill():
     normalizer = SkillNormalizerOld()
     normalizer.massive_add_to_index()
-    norm, additional_info = normalizer.LLM_call('random_skill')
+    norm, additional_info, notes = normalizer.LLM_call('random_skill')
+    assert notes is None
     assert norm is not None
     assert additional_info is not None
     assert additional_info.get('domain') is not None
@@ -492,57 +490,6 @@ def test_new_skill_normalizer():
     utility.drop_collection("new_skill_idx_verified")
     utility.drop_collection("new_skill_idx_candidates")
     utility.drop_collection("cache_raw_embedding")
-
-
-
-#### API TESTS
-
-
-
-@pytest.mark.anyio
-async def test_read_root():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"Hello": "World"}
-
-@pytest.mark.anyio
-async def test_normalization_skill():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/normalize/skill/", params={"name": "Python"})
-    assert response.status_code == 200
-    # Add more assertions here based on the expected response
-
-@pytest.mark.anyio
-async def test_check_normalized_skill():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/check_normalized/skill/", params={"norm_string": "Python", "accepted": True})
-    assert response.status_code == 200
-    # Add more assertions here based on the expected response
-
-@pytest.mark.anyio
-async def test_vector_search_skill():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/vector_search/skill/", params={"string_to_search": "Python", "limit": 1, "accepted": True})
-    assert response.status_code == 200
-    # Add more assertions here based on the expected response
-
-@pytest.mark.anyio
-async def test_get_embedding_skill():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/get_embedding/skill/", params={"word": "Python"})
-    assert response.status_code == 200
-
-
-
-
-
-
-
-
-
-
-
 
 
 

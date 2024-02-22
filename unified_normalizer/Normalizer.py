@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import logging
@@ -74,19 +74,30 @@ class Normalizer():
 
         Args:
         ----
-            * norm_type (str): The type of normalization to be performed, this will be used to name the indices.
-            * threshold_verified_accept (float, optional): The threshold for verified acceptance. Defaults to TRESHOLD_DIRECT_ACCEPT. 
+            * norm_type (str): 
+                The type of normalization to be performed, this will be used to name the indices.
+            * threshold_verified_accept (float, optional):
+                The threshold for verified acceptance. Defaults to TRESHOLD_DIRECT_ACCEPT. 
                 this is used to avoid a call to the LLM if the string is already in the verified index.
-            * threshold_candidate_accept (float, optional): The threshold for candidate acceptance. Defaults to TRESHOLD_CANDIDATE_ACCEPT.
+            * threshold_candidate_accept (float, optional): 
+                The threshold for candidate acceptance. Defaults to TRESHOLD_CANDIDATE_ACCEPT.
                 this is used to avoid a call to the LLM if the string is already in the candidates index.
-            * header_raw_string (str, optional): The header for the raw string. Defaults to "raw_string".
+            * header_raw_string (str, optional): 
+                The header for the raw string. Defaults to "raw_string".
                 this is the name of the raw string in the csv file used to create the prompt for the LLM.
-            * header_norm_string (str, optional): The header for the normalized string. Defaults to "norm_string".
+            * header_norm_string (str, optional): 
+                The header for the normalized string. Defaults to "norm_string".
                 this is the name of the normalized string in the csv file used to create the prompt for the LLM.
-            * header_notes (List[str], optional): The header for the notes. Defaults to None.
-                this is the name of the notes in the csv file used to create the prompt for the LLM. 
+            * header_notes (List[str], optional): 
+                The header for the notes. Defaults to None.
+                this are the names of the notes in the csv file used to create the prompt for the LLM. 
                 The notes are used to add a chain of thought prompting to the normalization of the strings.
-            * header_additional_info (List[str], optional): The header for additional information. Defaults to None.
+                They can be different for even for the same normalized string. Since the notes depend on the raw string.
+            * header_additional_info (List[str], optional): 
+                The header for additional information. Defaults to None.
+                this are the names of the additional information in the csv file used to create the prompt for the LLM.
+                The additional information are variables that are associated to the normalized string. 
+                Therefore they are the same for the same normalized string.
         """
         
         self.norm_type = norm_type
@@ -110,15 +121,40 @@ class Normalizer():
 
         self.collection_verified, self.collection_candidates = self.get_or_create_indices()
 
-    def preprocessing(self, word: str):
+    def preprocessing(self, word: str)->str:
+        """
+        This function preprocesses the input word so that is compatible with Milvus.
+
+        Args:
+        ----
+            * word (str): 
+                The word to be preprocessed.
+
+        Returns:
+        ----
+            * word (str): 
+                The preprocessed word.
+        """
         # ecape characters \n and \t " and '
         word = word.replace("\n", "\\n")
         word = word.replace("\t", "\\t")
         word = word.replace('"', '\\"')
         return word
 
-    def get_word_embedding(self, word: str):
-        """this function is used to get the word embedding of a word."""
+    def get_word_embedding(self, word: str)->np.array:
+        """
+        This function retrieves the word embedding for the input word.
+
+        Args:
+        ----
+            * word (str): 
+                The word for which the embedding is to be retrieved.
+
+        Returns:
+        ----
+            * embedding (np.array): 
+                The embedding of the input word.
+        """
 
         if utility.has_collection("cache_raw_embedding"):
             logger.info("Index cache_raw_embedding already exists.")
@@ -195,8 +231,18 @@ class Normalizer():
             logger.info(f"Word {word} found in cache.")
             return np.array(res[0]['raw_string_embedding'])
 
-    def cosine_similarity(self, input1, input2):
-        """this function is used to calculate the cosine similarity between two vectors or two words."""
+    def cosine_similarity(self, input1, input2)->float:
+        """
+        This function calculates the cosine similarity between two inputs. The inputs can be either strings or vectors.
+        If the inputs are strings, they are converted to vectors using the get_word_embedding method.
+        
+        Args:
+            input1 (str or np.array): The first input. Can be a string or a vector.
+            input2 (str or np.array): The second input. Can be a string or a vector.
+        
+        Returns:
+            float: The cosine similarity between the two inputs.
+        """
         # Convert words to vectors if necessary
         vector1 = self.get_word_embedding(input1) if isinstance(input1, str) else input1
         vector2 = self.get_word_embedding(input2) if isinstance(input2, str) else input2
@@ -204,6 +250,17 @@ class Normalizer():
         return np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
 
     def get_or_create_collection(self, index_name, description):
+        """
+        This function gets or creates a collection in Milvus. If the collection already exists, it is returned. 
+        If it does not exist, it is created with the specified index name and description, and then returned.
+
+        Args:
+            index_name (str): The name of the index.
+            description (str): The description of the index.
+
+        Returns:
+            Collection: The collection with the specified index name that will be used for the normalizer.
+        """
         if utility.has_collection(index_name):
             logger.info(f"Index {index_name} already exists.")
             return Collection(index_name)
@@ -264,6 +321,27 @@ class Normalizer():
             return collection
 
     def get_or_create_indices(self):
+        """
+        This function is used to get or create indices for the collections that the normalizer will use. 
+
+        It first generates descriptions for the verified and candidates collections. 
+        Then it calls the get_or_create_collection method for each of these collections 
+        and stores the returned collections in the variables collection_verified and collection_candidates.
+
+
+        The verified collection will contain the normalized strings that have been verified by an expert,
+        for now these will be added via the massive_add_to_index method and a CSV file.
+
+        The candidates collection will contain the normalized strings that have been generated by the LLM,
+        and that have not been verified yet.
+
+        Returns:
+        ----
+            * collection_verified (Collection): 
+                The verified collection.
+            * collection_candidates (Collection): 
+                The candidates collection.
+        """
         description_verified = f"{self.norm_type} verified collection"
         description_candidates = f"{self.norm_type} candidates collection"
         
@@ -273,6 +351,25 @@ class Normalizer():
         return collection_verified, collection_candidates
     
     def convert_to_milvus_format(self, row):
+        """
+        This function is used to convert a row from a CSV file to the format that Milvus expects.
+
+        Args:
+        ----
+            * row (pd.Series): 
+                The row from the CSV file.
+        
+        Returns:
+        ----
+            * raw_string (str): 
+                The raw string.
+            * notes (dict): 
+                The notes. The keys are the names given in the header_notes and the values are the values in the row.
+            * norm_string (str): 
+                The normalized string.
+            * additional_info (dict): 
+                The additional information. The keys are the names given in the header_additional_info and the values are the values in the row.
+        """
         
         raw_string = str(row[self.header_raw_string])
         notes = {k: str(row[k]) for k in self.header_notes} if self.header_notes is not None else None
@@ -281,7 +378,15 @@ class Normalizer():
         return raw_string, notes, norm_string, additional_info
     
     def massive_add_to_index(self, csv_file_path: str):
-        """this function is used to add a csv file to the index."""
+        """
+        This function is used to add a CSV file to the indices.
+        This is usefull when the indices are empty and we want to add a large number of strings to them.
+
+        Args:
+        ----
+            * csv_file_path (str): 
+                The path to the CSV file.
+        """
 
         df = pd.read_csv(csv_file_path, header=0, sep=';')
 
@@ -335,7 +440,26 @@ class Normalizer():
                     notes: dict = None,
                     embedding: np.array = None,
                     flush_db: bool = False):
-        """this function is used to add a new string to the index."""
+        """
+        This function is used to add a raw string to the index. If the embedding is not provided, it is calculated using the get_word_embedding method.
+
+        Args:
+        ----
+            * collection_name (str):
+                The name of the collection to which the raw string should be added.
+            * raw_string (str):
+                The raw string to be added.
+            * norm_string (str):
+                The normalized string to be added.
+            * additional_info (dict, optional):
+                The additional information to be added. Defaults to None.
+            * notes (dict, optional):
+                The notes to be added. Defaults to None.
+            * embedding (np.array, optional):
+                The embedding of the raw string. Defaults to None.
+            * flush_db (bool, optional):    
+                Whether to flush the database after adding the raw string. Defaults to False.
+        """
 
         if self.header_notes is not None and notes is None:
             raise ValueError(f"""These notes are required for this index: {self.header_notes}
@@ -378,7 +502,23 @@ class Normalizer():
             self.collection_verified.load()
 
     def check_if_normalized_is_in_collection(self, norm_string: str, collection_name: str='candidates'):
-        """this function is used to check if a normalized string is already in the index."""
+        """
+        This function is used to search if a normalized string is in the index.
+
+        Args:
+        ----
+            * norm_string (str):
+                The normalized string to be checked.
+            * collection_name (str, optional):
+                The name of the collection to be checked. Defaults to 'candidates'.
+
+        Returns:
+        ----
+            * bool:
+                Whether the normalized string is in the collection.
+            * result:
+                The result of the query.
+        """
         if collection_name == 'candidates':
             collection = self.collection_candidates
         elif collection_name == 'verified':
@@ -413,8 +553,32 @@ class Normalizer():
                                     embedding: np.array=None,
                                     collection_name: str='verified',
                                     limit: int=1,
-                                    search_normalized: bool=False):
-        """this function is used to prompt the user to create a new normalized string."""
+                                    search_normalized: bool=False)-> Tuple[list, list]:
+        """
+        This function is used to performa a vector search for a string or an embedding in the index.
+        Only one of string_to_search or embedding should be provided.
+        
+        Args:
+        ----
+            * string_to_search (str, optional):
+                The string to be searched. Defaults to None.
+            * embedding (np.array, optional):
+                The embedding to be searched. Defaults to None.
+            * collection_name (str, optional):
+                The name of the collection to be searched. Defaults to 'verified'.
+            * limit (int, optional):
+                The limit of the search. Defaults to 1.
+            * search_normalized (bool, optional):
+                Whether to limit the search on normalized string. Defaults to False, and searches on all raw strings.
+        
+        Returns:
+        ----
+            * results (list):
+                The results of the search.
+            * distances (list):
+                The distances of the search.
+
+        """
 
         if string_to_search is not None and embedding is not None:
             raise ValueError("Both string_to_search and embedding were provided. Only one should be provided.")
@@ -460,7 +624,31 @@ class Normalizer():
         return [hit.fields for hit in res][::-1], res.distances[::-1]
 
     def create_prompt(self, raw_string, fixed_part_path=None):
-        """this function is used to create a prompt for the user to normalize a skill."""
+        """
+        This function is used to create a prompt for the LLM. The prompt is created using the raw string and the data in the verified index.
+        And is composed of:
+            * header: 
+                The header of the csv file used to create the prompt. 
+                Created from the header_raw_string, header_notes, header_norm_string and header_additional_info.
+            * fixed_part:
+                The fixed part of the prompt. Read from the fixed_part_path.
+            * variable_part:
+                The variable part of the prompt. Created from the data in the verified index.
+            * raw_string:
+                The raw string for which the prompt is created.
+
+        Args:
+        ----
+            * raw_string (str):
+                The raw string for which the prompt is to be created.
+            * fixed_part_path (str, optional):
+                The path to the fixed part of the prompt. Defaults to None.
+        
+        Returns:
+        ----
+            * prompt (str):
+                The prompt for the LLM.
+        """
 
         data, _ = self.vector_search_on_collection(raw_string, collection_name='verified', limit=N_FOR_PROMPT)
 
@@ -513,7 +701,23 @@ class Normalizer():
     #     return pipeline.generate(prompt, args=args)
 
     def LLM_call(self, raw_string: str):
-        """this function is used to call the LLM to normalize a string."""
+        """
+        This function is used to call the LLM to normalize a string.
+
+        Args:
+        ----
+            * raw_string (str):
+                The raw string to be normalized.
+        
+        Returns:
+        ----
+            * norm_string (str):
+                The normalized string.
+            * additional_info (dict, optional):
+                The additional information associated with the normalized string.
+            * notes (dict, optional):
+                The notes associated with the raw string. Created by the LLM to normalize the string.
+        """
             # load csv_prompt
         prompt = self.create_prompt(raw_string)
 
@@ -557,10 +761,35 @@ class Normalizer():
                 threshold_verified_accept=None,
                 threshold_candidate_accept=None,
                 flush_db=False):
-        """this function is used to normalize a raw string.
-        To avoid calls to the LL you can:
-            * set threshold_verified_accept to >1 and threshold_candidate_accept <0 to just match in the candidates collection. 
-            * set threshold_verified_accept to <0 to just match in the verified collection."""
+        """
+        This function is used to normalize a raw string. It checks if the raw string is already in the verified or candidates collection and if not, it uses the LLM to normalize the string.
+
+        To avoid calls to the LLM, you can adjust the threshold values:
+            * Set threshold_verified_accept to >1 and threshold_candidate_accept <0 to only match in the candidates collection. 
+            * Set threshold_verified_accept to <0 to only match in the verified collection.
+
+        Args:
+        ----
+            * raw_string (str): 
+                The raw string to be normalized.
+            * threshold_verified_accept (float, optional):
+                The threshold for accepting a match in the verified collection. Defaults to self.threshold_verified_accept.
+            * threshold_candidate_accept (float, optional):
+                The threshold for accepting a match in the candidates collection. Defaults to self.threshold_candidate_accept.
+            * flush_db (bool, optional):
+                If set to True, it will flush the database after adding a new entry. Defaults to False.
+
+        Returns:
+        ----
+            * norm_string (str): 
+                The normalized string.
+            * additional_info (dict, optional):
+                The additional information associated with the normalized string.
+            * notes (dict, optional):
+                The notes associated with the raw string. Created by the LLM to normalize the string.
+            * normalization_info (dict):
+                Information about the normalization process, including the type of match found and the score.
+        """
 
         if threshold_verified_accept is None:
             threshold_verified_accept = self.threshold_verified_accept
