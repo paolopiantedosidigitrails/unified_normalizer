@@ -26,18 +26,19 @@ openai.api_key = OPENAI_API_KEY
 with open("config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
-MODEL_NAME_LLM = config['MODEL_NAME_LLM']
+MODEL_NAME_LLM = os.getenv("MODEL_NAME_LLM", config['MODEL_NAME_LLM'])
 
-ALIAS = config['ALIAS']
-URI = config['URI']
-# MILVUS_TOKEN = config['MILVUS_TOKEN']   
-LOGGING_LEVEL = config['LOGGING_LEVEL']
+ALIAS = os.getenv('ALIAS', config['ALIAS'])
+MILVUS_HOST = os.getenv('MILVUS_HOST', config['MILVUS_HOST'])
+MILVUS_PORT = os.getenv('MILVUS_PORT', config['MILVUS_PORT'])
+# MILVUS_TOKEN = os.getenv('MILVUS_TOKEN', config['MILVUS_TOKEN'])   
+LOGGING_LEVEL = os.getenv('LOGGING_LEVEL', config['LOGGING_LEVEL'])
 
-N_FOR_PROMPT = config['N_FOR_PROMPT']
-TRESHOLD_DIRECT_ACCEPT = config['TRESHOLD_DIRECT_ACCEPT']
-TRESHOLD_CANDIDATE_ACCEPT = config['TRESHOLD_CANDIDATE_ACCEPT']
+N_FOR_PROMPT = int(os.getenv('N_FOR_PROMPT', config['N_FOR_PROMPT']))
+TRESHOLD_DIRECT_ACCEPT = float(os.getenv('TRESHOLD_DIRECT_ACCEPT', config['TRESHOLD_DIRECT_ACCEPT']))
+TRESHOLD_CANDIDATE_ACCEPT = float(os.getenv('TRESHOLD_CANDIDATE_ACCEPT', config['TRESHOLD_CANDIDATE_ACCEPT']))
 
-DEVICE = config['DEVICE']
+DEVICE = os.getenv('DEVICE', config['DEVICE'])
 
 os.environ['RWKV_JIT_ON'] = '1'
 
@@ -47,7 +48,7 @@ logger = logging.getLogger(__name__)
 
 connections.connect(
   alias=ALIAS,
-  uri=URI,
+  uri=f"{MILVUS_HOST}:{MILVUS_PORT}",
 #   token=MILVUS_TOKEN,
 )
 
@@ -68,7 +69,8 @@ class Normalizer():
                  header_raw_string: str = "raw_string",
                  header_norm_string: str = "norm_string",
                  header_notes:List[str] = None,
-                 header_additional_info: List[str] = None):
+                 header_additional_info: List[str] = None,
+                 n_for_prompt: int = N_FOR_PROMPT):
         """
         Initializes the Normalizer class.
 
@@ -98,8 +100,11 @@ class Normalizer():
                 this are the names of the additional information in the csv file used to create the prompt for the LLM.
                 The additional information are variables that are associated to the normalized string. 
                 Therefore they are the same for the same normalized string.
+            * n_for_prompt (int, optional):
+                The number of entries to be used from the verified index to create the prompt for the LLM. Defaults to N_FOR_PROMPT.
         """
-        
+        self.n_for_prompt = n_for_prompt
+
         self.norm_type = norm_type
         self.verified_index = norm_type+"_idx_verified"
         self.candidates_index = norm_type+"_idx_candidates"
@@ -650,7 +655,7 @@ class Normalizer():
                 The prompt for the LLM.
         """
 
-        data, _ = self.vector_search_on_collection(raw_string, collection_name='verified', limit=N_FOR_PROMPT)
+        data, _ = self.vector_search_on_collection(raw_string, collection_name='verified', limit=self.n_for_prompt)
 
         list_for_csv = [ ]
         for d in data:

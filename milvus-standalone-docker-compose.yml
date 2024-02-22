@@ -69,6 +69,24 @@ services:
     depends_on:
       - "standalone"
 
+  unified_normalizer:
+    # command: tail -f /dev/null
+    image: unifiednormalizer:latest
+    ports:
+      - "8031:8031"
+    environment:
+      - DEVICE=cuda:0
+      - MILVUS_HOST=http://milvus-standalone
+      - MILVUS_PORT=19530
+      - LOG_TO_CONSOLE=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
 
 networks:
   default:

@@ -6,6 +6,7 @@ from fastapi import FastAPI, HTTPException
 import yaml 
 import os
 import logging
+from logging.handlers import RotatingFileHandler
 
 with open("config.yaml", "r") as file:
     config = yaml.safe_load(file)
@@ -15,7 +16,14 @@ PORT = os.getenv('PORT', config['PORT'])
 TRESHOLD_DIRECT_ACCEPT = os.getenv('TRESHOLD_DIRECT_ACCEPT', config['TRESHOLD_DIRECT_ACCEPT'])
 TRESHOLD_CANDIDATE_ACCEPT = os.getenv('TRESHOLD_CANDIDATE_ACCEPT', config['TRESHOLD_CANDIDATE_ACCEPT'])
 
-logging.basicConfig(filename='normalizer.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=getattr(logging, LOGGING_LEVEL))
+log_handler = RotatingFileHandler('normalizer.log', maxBytes=50**6, backupCount=10)
+log_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
+
+logger = logging.getLogger()
+logger.setLevel(getattr(logging, LOGGING_LEVEL))
+logger.addHandler(log_handler)
+
+# logging.basicConfig(filename='normalizer.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=getattr(logging, LOGGING_LEVEL))
 
 ml_models = {}
 
@@ -23,14 +31,22 @@ ml_models = {}
 async def ml_lifespan_manager(app: FastAPI):
     # Load the ML model
     skill_normalizer = SkillNormalizerOld()
+    skill_normalizer.massive_add_to_index()
+
     job_normalizer = JobNormalizer()
+    job_normalizer.massive_add_to_index()
+
     language_normalizer = LanguageNormalizer()
+    language_normalizer.massive_add_to_index()
+
     skill_normalizer_new = SkillNormalizerNew()
+    skill_normalizer_new.massive_add_to_index()
 
     ml_models["skill"] = skill_normalizer
     ml_models["job"] = job_normalizer
     ml_models["language"] = language_normalizer
     ml_models["skill_new"] = skill_normalizer_new
+    
     yield
     # Clean up the ML models and release the resources
     ml_models.clear()
