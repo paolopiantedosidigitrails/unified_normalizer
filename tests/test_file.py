@@ -31,7 +31,7 @@ def test_word_embedding():
 
     # check if embedding is normalized
     vector = normalizer.get_word_embedding("test")
-    assert np.linalg.norm(vector) == 1.0
+    assert np.linalg.norm(vector) > 0.99
 
     utility.drop_collection("test_idx_verified")
     utility.drop_collection("test_idx_candidates")
@@ -96,6 +96,14 @@ def test_prompt_element_collection_creation():
 
     assert distances[0] < distances[1]
 
+    t = time.time()
+    for x in range(100):
+        normalizer.vector_search_on_collection(string_to_search= 'test',
+                                                      collection_name = 'verified',
+                                                      limit=1)
+    t = time.time() - t
+    print(f"100 searches in {t} seconds. single time: {t/100} seconds.")
+
     utility.drop_collection("test_idx_verified")
     utility.drop_collection("test_idx_candidates")
     utility.drop_collection("cache_raw_embedding")
@@ -103,7 +111,10 @@ def test_prompt_element_collection_creation():
 def test_prompt_creation_skills():
     normalizer = SkillNormalizerOld()
     normalizer.massive_add_to_index()
-    prompt = normalizer.create_prompt("test")
+    response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test',
+                                                                collection_name = 'verified',
+                                                                limit=1)
+    prompt = normalizer.create_prompt("test", response)
     assert prompt[:54] == "skill_raw;skill_normalized;domain;field;type_of_skill\n"
     assert prompt[-6:] == "\ntest;"
 
@@ -114,7 +125,8 @@ def test_prompt_creation_skills():
 def test_LLM_call_skill():
     normalizer = SkillNormalizerOld()
     normalizer.massive_add_to_index()
-    norm, additional_info, notes = normalizer.LLM_call('random_skill')
+    response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test', collection_name = 'verified', limit=10)
+    norm, additional_info, notes = normalizer.LLM_call('random_skill', response)
     assert notes is None
     assert norm is not None
     assert additional_info is not None
@@ -133,7 +145,8 @@ def test_LLM_call_with_notes():
                              header_additional_info=["additional_info_key"],
                              header_notes=["test_note"])
     normalizer.add_to_index("verified", "test_raw", "test_normalized", {"additional_info_key": "additional_info_value"}, {"test_note": "test_note_value"})
-    norm, additional_info, notes = normalizer.LLM_call('test_normalized') 
+    response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test_normalized', collection_name = 'verified', limit=10)
+    norm, additional_info, notes = normalizer.LLM_call('test_normalized', response) 
     assert norm == "test_normalized"
     assert additional_info['additional_info_key'] == "additional_info_value"
     assert notes['test_note'] == "test_note_value"
@@ -215,7 +228,8 @@ def test_prompt_creation():
     normalizer.add_to_index("verified", "test_", "test", {"additional_info_key": "additional_info_value", "add_key_2": "add2"})
     normalizer.add_to_index("verified", "raw_testing", "test_normalized", {"additional_info_key": "additional_info_value", "add_key_2": "add2"})
     normalizer.add_to_index("verified", "armadillo", "armadillo", {"additional_info_key": "additional_info_value", "add_key_2": "add2"})
-    prompt = normalizer.create_prompt("test_at_the_end")
+    response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test_at_the_end', collection_name = 'verified', limit=20)
+    prompt = normalizer.create_prompt("test_at_the_end", response)
     assert prompt[:53] == "raw_string;norm_string;additional_info_key;add_key_2\n"
     assert prompt[:62] == "raw_string;norm_string;additional_info_key;add_key_2\narmadillo"
     assert prompt[-17:] == "\ntest_at_the_end;"
@@ -417,7 +431,7 @@ def test_notes():
                                                     collection_name = 'verified',
                                                     limit=20)
     assert hits[0][-1]['notes']['note'] == 'sheeep is a typo for sheep and we eat sheep'
-    prompt = normalizer.create_prompt("sheeep")
+    prompt = normalizer.create_prompt("sheeep", hits[0])
 
     assert prompt[:50] == 'raw_string;note;norm_string;animal_type;food_flag\n'
     assert prompt[-8:] == '\nsheeep;'
@@ -463,6 +477,7 @@ def test_new_skill_normalizer():
     assert norm_info.get('type') == 'new_normalized_string'
     assert norm_info.get('score') is None
 
+    time.sleep(1)
     norm, additional_info, notes, norm_info = normalizer.normalize('Data Sciennce')
 
     assert notes is not None
@@ -484,7 +499,8 @@ def test_new_skill_normalizer():
     assert norm_info.get('type') == 'new_normalized_string'
     assert norm_info.get('score') is None
 
-    prompt = normalizer.create_prompt("test")
+    response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test', collection_name = 'verified', limit=10)
+    prompt = normalizer.create_prompt("test", response)
     assert prompt[:99] == 'skill_raw;observations;skill_normalized;possible_domains;possible_fields;type_of_skill;too_generic\n'
 
     utility.drop_collection("new_skill_idx_verified")

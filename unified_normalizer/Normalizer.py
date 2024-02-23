@@ -186,10 +186,10 @@ class Normalizer():
 
             index_params_vector = {
                 "metric_type": "IP",
-                "index_type": "HNSW",
+                "index_type": "IVF_FLAT",
                 "params": {
-                    "M": 16,
-                    "efConstruction": 500,
+                    "nlist": 16384,
+                    "nprobe": 16,
                 }
             }
 
@@ -299,10 +299,10 @@ class Normalizer():
 
             index_params = {
                 "metric_type": "IP",
-                "index_type": "HNSW",
+                "index_type": "IVF_FLAT",
                 "params": {
-                    "M": 16,
-                    "efConstruction": 500,
+                    "nlist": 16384,
+                    "nprobe": 16,
                 }
             }
 
@@ -316,7 +316,7 @@ class Normalizer():
                 schema=schema,
                 using='default',
                 shards_num=2,
-                consistency_level="Strong"
+                consistency_level="Bounded",
 
             )
             status = collection.create_index(field_name="raw_string_embedding", index_params=index_params)
@@ -542,6 +542,7 @@ class Normalizer():
                     offset = 0,
                     limit = 1, 
                     output_fields = ["raw_string", "norm_string","additional_info", "notes"]
+                    # cosistency_level="Strong"
                     )
         except Exception as e:
             logger.error(f"""Error while querying the collection for normalized string:
@@ -617,18 +618,18 @@ class Normalizer():
                 limit=limit,
                 expr="norm_string == raw_string",
                 output_fields=['raw_string', 'norm_string', 'additional_info', 'notes'],
-                consistency_level="Strong")[0]
+                consistency_level="Bounded")[0]
         else:
             res = collection.search(data=[embedding], 
                 anns_field="raw_string_embedding", 
                 param=search_params,
                 limit=limit,
                 output_fields=['raw_string', 'norm_string', 'additional_info', 'notes'],
-                consistency_level="Strong")[0]
+                consistency_level="Bounded")[0]
 
         return [hit.fields for hit in res][::-1], res.distances[::-1]
 
-    def create_prompt(self, raw_string, fixed_part_path=None):
+    def create_prompt(self, raw_string, verified_results, fixed_part_path=None):
         """
         This function is used to create a prompt for the LLM. The prompt is created using the raw string and the data in the verified index.
         And is composed of:
@@ -646,6 +647,9 @@ class Normalizer():
         ----
             * raw_string (str):
                 The raw string for which the prompt is to be created.
+            * verified_results (list):
+                The data in the verified index taken from the vector_search_on_collection method.
+                This is used to create the prompt for the LLM.
             * fixed_part_path (str, optional):
                 The path to the fixed part of the prompt. Defaults to None.
         
@@ -655,10 +659,8 @@ class Normalizer():
                 The prompt for the LLM.
         """
 
-        data, _ = self.vector_search_on_collection(raw_string, collection_name='verified', limit=self.n_for_prompt)
-
         list_for_csv = [ ]
-        for d in data:
+        for d in verified_results:
             dict_for_row = {'raw_string': d['raw_string'], 'norm_string': d['norm_string']}
             if self.header_notes is not None:
                 dict_for_row = {'raw_string': dict_for_row['raw_string'], **d['notes'], 'norm_string': dict_for_row['norm_string']}
@@ -705,7 +707,7 @@ class Normalizer():
    
     #     return pipeline.generate(prompt, args=args)
 
-    def LLM_call(self, raw_string: str):
+    def LLM_call(self, raw_string: str, verified_results: list):
         """
         This function is used to call the LLM to normalize a string.
 
@@ -713,6 +715,9 @@ class Normalizer():
         ----
             * raw_string (str):
                 The raw string to be normalized.
+            * verified_results (list):
+                The data in the verified index taken from the vector_search_on_collection method.
+                This is used to create the prompt for the LLM.
         
         Returns:
         ----
@@ -724,7 +729,7 @@ class Normalizer():
                 The notes associated with the raw string. Created by the LLM to normalize the string.
         """
             # load csv_prompt
-        prompt = self.create_prompt(raw_string)
+        prompt = self.create_prompt(raw_string, verified_results)
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
             # future = executor.submit(self.call_rwkv, prompt)
@@ -807,22 +812,22 @@ class Normalizer():
         raw_embedding = self.get_word_embedding(raw_string)
 
         # check if raw string is already in the verified index using vector search
-        verified_results, verified_distances = self.vector_search_on_collection(string_to_search=raw_string, collection_name='verified', limit=1)
-        if verified_results and verified_distances[0] >= threshold_verified_accept:
-            normalization_info = {"type": "verified_direct_match", "score": verified_distances[0]}
-            logger.info(f"Verified direct match found for {raw_string}. Normalized string: {verified_results[0]['norm_string']}")
-            return verified_results[0]['norm_string'], verified_results[0]['additional_info'], verified_results[0]['notes'], normalization_info
+        verified_results, verified_distances = self.vector_search_on_collection(embedding=raw_embedding, collection_name='verified', limit=self.n_for_prompt)
+        if verified_results and verified_distances[-1] >= threshold_verified_accept:
+            normalization_info = {"type": "verified_direct_match", "score": verified_distances[-1]}
+            logger.info(f"Verified direct match found for {raw_string}. Normalized string: {verified_results[-1]['norm_string']}")
+            return verified_results[-1]['norm_string'], verified_results[-1]['additional_info'], verified_results[-1]['notes'], normalization_info
 
         # if no, check if raw string is already in the candidates index using vector search
-        candidates_results, candidates_distances = self.vector_search_on_collection(string_to_search=raw_string, collection_name='candidates', limit=1)
-        if candidates_results and candidates_distances[0] >= threshold_candidate_accept:
-            normalization_info = {"type": "candidate_direct_match", "score": candidates_distances[0]}
-            logger.info(f"Candidate direct match found for {raw_string}. Normalized string: {candidates_results[0]['norm_string']}")
-            return candidates_results[0]['norm_string'], candidates_results[0]['additional_info'], candidates_results[0]['notes'], normalization_info
+        candidates_results, candidates_distances = self.vector_search_on_collection(embedding=raw_embedding, collection_name='candidates', limit=1)
+        if candidates_results and candidates_distances[-1] >= threshold_candidate_accept:
+            normalization_info = {"type": "candidate_direct_match", "score": candidates_distances[-1]}
+            logger.info(f"Candidate direct match found for {raw_string}. Normalized string: {candidates_results[-1]['norm_string']}")
+            return candidates_results[-1]['norm_string'], candidates_results[-1]['additional_info'], candidates_results[-1]['notes'], normalization_info
 
         # if no, use LLM to normalize the string
         logger.info(f"No direct match found for {raw_string}. Calling LLM.")
-        norm_string, additional_info_llm, notes = self.LLM_call(raw_string)
+        norm_string, additional_info_llm, notes = self.LLM_call(raw_string, verified_results)
         logger.info(f"""LLM response for {raw_string}: {norm_string},
                         additional_info: {additional_info_llm},
                         notes: {notes}""")
@@ -868,8 +873,8 @@ class JobNormalizer(Normalizer):
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/job_roles_dataset.csv')
     
-    def create_prompt(self, raw_string):
-        return super().create_prompt(raw_string, 'data/job_roles_dataset_prompt.csv')
+    def create_prompt(self, raw_string, verified_results):
+        return super().create_prompt(raw_string, verified_results, 'data/job_roles_dataset_prompt.csv')
 
     
 class LanguageNormalizer(Normalizer):
@@ -882,8 +887,8 @@ class LanguageNormalizer(Normalizer):
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/languages.csv')
     
-    def create_prompt(self, raw_string):
-        return super().create_prompt(raw_string, 'data/languages_prompt.csv')
+    def create_prompt(self, raw_string, verified_results):
+        return super().create_prompt(raw_string, verified_results, 'data/languages_prompt.csv')
     
 class SkillNormalizerNew(Normalizer):
     def __init__(self):
@@ -898,8 +903,8 @@ class SkillNormalizerNew(Normalizer):
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/new_skills_dataset.csv')
 
-    def create_prompt(self, raw_string):
-        return super().create_prompt(raw_string, 'data/new_skills_dataset_prompt.csv')
+    def create_prompt(self, raw_string, verified_results):
+        return super().create_prompt(raw_string, verified_results, 'data/new_skills_dataset_prompt.csv')
 
 if __name__ == "__main__":
     normalizer = JobNormalizer()

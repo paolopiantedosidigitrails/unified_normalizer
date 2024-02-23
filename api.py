@@ -144,13 +144,13 @@ async def vector_search(normalization_type: str,
 async def get_embedding(normalization_type: str, word: str):
     """
     This endpoint retrieves the embedding of a word.
-     * path_param normalization_type: The type of normalization to be used.
-     * query_param word: The word to get the embedding of.
+    * path_param normalization_type: The type of normalization to be used.
+    * query_param word: The word to get the embedding of.
     ---
-     * return: A JSON with this format:
-        {
-          "embedding": list of floats representing the word embedding
-        }
+    * return: A JSON with this format:
+            {
+            "embedding": list of floats representing the word embedding
+            }
     """
     if normalization_type not in ml_models:
         raise HTTPException(status_code=404, 
