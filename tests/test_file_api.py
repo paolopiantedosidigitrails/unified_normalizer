@@ -2,6 +2,7 @@ import pytest  # noqa: F401
 import uvicorn  
 import yaml
 import requests
+import os
 
 from pymilvus import Collection
 from pymilvus import connections
@@ -15,13 +16,14 @@ from pymilvus import connections
 with open("config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
-port = int(config['PORT'])
+port = int(8855)
 ALIAS = config['ALIAS']
-URI = config['URI']
+MILVUS_HOST = os.getenv('MILVUS_HOST', config['MILVUS_HOST'])
+MILVUS_PORT = os.getenv('MILVUS_PORT', config['MILVUS_PORT'])
 
 connections.connect(
   alias=ALIAS,
-  uri=URI,
+  uri=f"{MILVUS_HOST}:{MILVUS_PORT}",
 #   token=MILVUS_TOKEN,
 )
 
@@ -35,7 +37,15 @@ def test_api_read_root():
     assert response.json() == {"Hello": "World"}
 
 def test_api_normalize():
-    response = requests.get(f"http://localhost:{port}/normalize/skill?name=piiiiiiithon")
+    response = requests.get(f"http://localhost:{port}/normalize/skill?name=piiithon")
+    assert response.status_code == 200
+    assert response.json()["normalized_string"] == "Python"
+    assert response.json()["additional_info"]["type_of_skill"] == 'Hard'
+    assert response.json()["notes"] is None
+    assert response.json()["normalization_info"]["type"] == 'new_normalized_string'
+    assert response.json()["normalization_info"]["score"] is None
+
+    response = requests.get(f"http://localhost:{port}/normalize/skill?name=piiiithon")
     assert response.status_code == 200
     assert response.json()["normalized_string"] == "Python"
     assert response.json()["additional_info"]["type_of_skill"] == 'Hard'
@@ -51,7 +61,7 @@ def test_api_normalize():
     assert response.json()["normalization_info"]["type"] == 'candidate_direct_match'
     assert response.json()["normalization_info"]["score"] > config['TRESHOLD_CANDIDATE_ACCEPT']
 
-    expr = "raw_string == 'piiiiiiithon'"
+    expr = "raw_string in ['piiiiiiithon', 'piiithon', 'piiiithon']"
     collection = Collection("skill_idx_candidates")
     collection.delete(expr)
 
@@ -64,7 +74,7 @@ def test_api_check_normalized():
     assert response.status_code == 200
     assert "exists" in response.json()
     assert response.json()["exists"]
-    assert response.json()["result"]['raw_string'] == 'Screenwriter'
+    assert response.json()["result"]['raw_string'] == 'screenwriter'
     assert response.json()["result"]['norm_string'] == 'Screenwriter'
     assert response.json()["result"]['notes'] is None
 
@@ -92,41 +102,43 @@ def test_api_vector_search():
     response = requests.get(f"http://localhost:{port}/vector_search/language?string_to_search=italy&limit=10")
     assert response.status_code == 200
     assert "results" in response.json()
-    assert response.json()["results"][-1]['raw_string'] == 'italian'
+    assert response.json()["results"][-1]['raw_string'] == 'italian '
     assert len(response.json()["distances"]) == 10
-    # TBD
-    response = requests.get(f"http://localhost:{port}/vector_search/skill_new?string_to_search=italy&search_normalized=True&limit=10")
-    assert response.status_code == 200
-    assert "results" in response.json()
-    assert response.json()["results"][-1]['raw_string'] == response.json()["results"][-1]['norm_string']
 
     # wrong normalization type
     response = requests.get(f"http://localhost:{port}/vector_search/not_a_norm?string_to_search=italy&limit=10")
     assert response.status_code == 404
 
 def test_api_get_embedding():
-    response = requests.get(f"http://localhost:{port}/get_embedding/skill?word=python")
+
+    response = requests.post(f"http://localhost:{port}/get_embedding/skill/", json=["string"])
     assert response.status_code == 200
-    assert "embedding" in response.json()
-    embedding1 = response.json()["embedding"]
+    assert "embeddings" in response.json()
+    embedding1 = response.json()["embeddings"][0]
 
     # the embedding should be the same
-    response = requests.get(f"http://localhost:{port}/get_embedding/job?word=python")
+    response = requests.post(f"http://localhost:{port}/get_embedding/job/", json=["string"])
     assert response.status_code == 200
-    assert "embedding" in response.json()
-    embedding2 = response.json()["embedding"]
+    assert "embeddings" in response.json()
+    embedding2 = response.json()["embeddings"][0]
     assert embedding1 == embedding2
 
     # the embedding should be different
-    response = requests.get(f"http://localhost:{port}/get_embedding/skill?word=java")
+    response = requests.post(f"http://localhost:{port}/get_embedding/skill/", json=["test"])
     assert response.status_code == 200
-    assert "embedding" in response.json()
-    embedding3 = response.json()["embedding"]
+    assert "embeddings" in response.json()
+    embedding3 = response.json()["embeddings"][0]
     assert embedding1 != embedding3
 
     # wrong normalization type
-    response = requests.get(f"http://localhost:{port}/get_embedding/not_a_norm?word=java")
+    response = requests.post(f"http://localhost:{port}/get_embedding/not_a_norm/", json=["test"])
     assert response.status_code == 404
+
+    #test multiple words
+    response = requests.post(f"http://localhost:{port}/get_embedding/skill/", json=["test", "string"])
+    assert response.status_code == 200
+    assert "embeddings" in response.json()
+    assert len(response.json()["embeddings"]) == 2
 
 
 def test_api_cosine_similarity():

@@ -15,7 +15,7 @@ pymilvus = "2.3.6"
 openai = "0.28"
 fastapi = "0.109.2"
 uvicorn = "0.27.0.post1"
-rwkv = "0.8.25"
+numba = "0.59.0"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -14,8 +14,9 @@ from concurrent.futures import TimeoutError
 import concurrent.futures
 import tqdm
 import yaml
-from rwkv.model import RWKV
-from rwkv.utils import PIPELINE, PIPELINE_ARGS
+# from rwkv.model import RWKV
+# from rwkv.utils import PIPELINE, PIPELINE_ARGS
+import numba
 
 load_dotenv()
 
@@ -40,6 +41,8 @@ TRESHOLD_CANDIDATE_ACCEPT = float(os.getenv('TRESHOLD_CANDIDATE_ACCEPT', config[
 
 DEVICE = os.getenv('DEVICE', config['DEVICE'])
 
+COSISTENCY_LEVEL = os.getenv('COSISTENCY_LEVEL', config['COSISTENCY_LEVEL'])
+
 os.environ['RWKV_JIT_ON'] = '1'
 
 # Set up logging
@@ -56,6 +59,30 @@ connections.connect(
 # LLM_MODEL = RWKV(model='models/RWKV-5-World-3B-v2-20231113-ctx4096.pth', strategy='mps fp32')
 
 EMBEDDING_MODEL = SentenceTransformer("thenlper/gte-base").to(DEVICE)
+
+@numba.jit(nopython=True)
+def preprocessing(word: str)->str:
+    """
+    This function preprocesses the input word so that is compatible with Milvus.
+
+    Args:
+    ----
+        * word (str): 
+            The word to be preprocessed.
+
+    Returns:
+    ----
+        * word (str): 
+            The preprocessed word.
+    """
+    # ecape characters \n and \t " and '
+    word = word.replace("\n", "\\n")
+    word = word.replace("\t", "\\t")
+    word = word.replace('"', '\\"')
+    return word
+# calling the function once to compile it
+# so that it can be used in parallel
+preprocessing("word")
 
 class Normalizer():
     """
@@ -126,115 +153,110 @@ class Normalizer():
 
         self.collection_verified, self.collection_candidates = self.get_or_create_indices()
 
-    def preprocessing(self, word: str)->str:
-        """
-        This function preprocesses the input word so that is compatible with Milvus.
 
-        Args:
-        ----
-            * word (str): 
-                The word to be preprocessed.
-
-        Returns:
-        ----
-            * word (str): 
-                The preprocessed word.
-        """
-        # ecape characters \n and \t " and '
-        word = word.replace("\n", "\\n")
-        word = word.replace("\t", "\\t")
-        word = word.replace('"', '\\"')
-        return word
-
-    def get_word_embedding(self, word: str)->np.array:
+    def get_word_embedding(self, words)->dict:
         """
         This function retrieves the word embedding for the input word.
 
         Args:
         ----
-            * word (str): 
-                The word for which the embedding is to be retrieved.
+            * words (str or list of str): 
+                The word or list of words for which the embedding is to be retrieved.
 
         Returns:
         ----
-            * embedding (np.array): 
+            * embedding_dict (dict): 
                 The embedding of the input word.
         """
 
-        if utility.has_collection("cache_raw_embedding"):
-            logger.info("Index cache_raw_embedding already exists.")
-            collection_cache = Collection("cache_raw_embedding")
-        else:
-            raw_string = FieldSchema(
-                name="raw_string",
-                dtype=DataType.VARCHAR,
-                max_length=200,
-                is_primary=True)
+        # if utility.has_collection("cache_raw_embedding"):
+        #     logger.info("Index cache_raw_embedding already exists.")
+        #     collection_cache = Collection("cache_raw_embedding")
+        # else:
+        #     raw_string = FieldSchema(
+        #         name="raw_string",
+        #         dtype=DataType.VARCHAR,
+        #         max_length=200,
+        #         is_primary=True)
 
-            data_type = FieldSchema(
-                name="data_type",
-                dtype=DataType.VARCHAR,
-                max_length=200,
-                default_value="Unknown"
-            )
+        #     data_type = FieldSchema(
+        #         name="data_type",
+        #         dtype=DataType.VARCHAR,
+        #         max_length=200,
+        #         default_value="Unknown"
+        #     )
 
-            raw_string_embedding = FieldSchema(
-                name="raw_string_embedding",
-                dtype=DataType.FLOAT_VECTOR,
-                dim=768
-            )
+        #     raw_string_embedding = FieldSchema(
+        #         name="raw_string_embedding",
+        #         dtype=DataType.FLOAT_VECTOR,
+        #         dim=768
+        #     )
 
-            index_params_vector = {
-                "metric_type": "IP",
-                "index_type": "IVF_FLAT",
-                "params": {
-                    "nlist": 16384,
-                    "nprobe": 16,
-                }
-            }
+        #     index_params_vector = {
+        #         "metric_type": "IP",
+        #         "index_type": "IVF_FLAT",
+        #         "params": {
+        #             "nlist": 16384,
+        #             "nprobe": 16,
+        #         }
+        #     }
 
-            schema = CollectionSchema(
-                fields=[raw_string, data_type, raw_string_embedding],
-                description="Cache for raw string embeddings",
-                enable_dynamic_field=True
-            )
-            collection_cache = Collection(
-                name="cache_raw_embedding",
-                schema=schema,
-                using='default',
-                shards_num=2
-            )
-            status = collection_cache.create_index(field_name="raw_string_embedding", index_params=index_params_vector)
-            logger.info(f"vector index cache_raw_embedding created. Status: {status}")
-            logger.info(f"Loading collection {collection_cache.name}")
-            collection_cache.load()
+        #     schema = CollectionSchema(
+        #         fields=[raw_string, data_type, raw_string_embedding],
+        #         description="Cache for raw string embeddings",
+        #         enable_dynamic_field=True
+        #     )
+        #     collection_cache = Collection(
+        #         name="cache_raw_embedding",
+        #         schema=schema,
+        #         using='default',
+        #         shards_num=2
+        #     )
+        #     status = collection_cache.create_index(field_name="raw_string_embedding", index_params=index_params_vector)
+        #     logger.info(f"vector index cache_raw_embedding created. Status: {status}")
+        #     logger.info(f"Loading collection {collection_cache.name}")
+        #     collection_cache.load()
 
-        if str(utility.load_state(collection_cache.name))=='NotLoad':
-            raise ValueError(f"Collection {collection_cache.name} is not loaded.")
+        # if str(utility.load_state(collection_cache.name))=='NotLoad':
+        #     raise ValueError(f"Collection {collection_cache.name} is not loaded.")
         
+        if isinstance(words, str):
+            words = [words]
 
-        word = self.preprocessing(word)
-        try: 
-            res = collection_cache.query(
-                    expr = f"raw_string == \"{word}\"",
-                    offset = 0,
-                    limit = 1,
-                    output_fields = ["raw_string_embedding"]
-                    )
-        except Exception as e:
-            logger.error(f"""Error while querying the cache for word:
-                          {word}.""")
-            logger.error(e)
-            return None
+        words = [preprocessing(word) for word in words]
+        embeddings = EMBEDDING_MODEL.encode(words)
 
-        if len(res) == 0:
-            logger.info(f"Word {word} not in cache. Calculating embedding.")
-            embedding = EMBEDDING_MODEL.encode(word)
-            collection_cache.upsert([[word], [self.norm_type], [embedding]])
-            return embedding
-        else:
-            logger.info(f"Word {word} found in cache.")
-            return np.array(res[0]['raw_string_embedding'])
+        return {'words': words, 'embeddings': embeddings}
+
+        # words = [preprocessing(word) for word in words]
+
+        # try: 
+        #     res = collection_cache.query(
+        #             expr = f"raw_string in {words}",
+        #             offset = 0,
+        #             limit = 1,
+        #             output_fields = ["raw_string_embedding", "raw_string"]
+        #             )
+        # except Exception as e:
+        #     logger.error(f"""Error while querying the cache for words:
+        #                 {words}.""")
+        #     logger.error(e)
+        #     return None
+        
+        # words_in_cache = [r['raw_string'] for r in res]
+        # emnbeddings_in_cache = [r['raw_string_embedding'] for r in res]
+        # words_not_in_cache = [word for word in words if word not in words_in_cache]
+
+        # if len(words_not_in_cache) > 0:
+        #     logger.info(f"Words {words_not_in_cache} not in cache. Calculating embeddings.")
+        #     embeddings_not_in_cache = EMBEDDING_MODEL.encode(words_not_in_cache)
+        #     collection_cache.upsert([words_not_in_cache, [self.norm_type]*len(words_not_in_cache), embeddings_not_in_cache])
+        # else:
+        #     embeddings_not_in_cache = []
+            
+        # return {**{word: embedding for word, embedding in zip(words_in_cache, emnbeddings_in_cache)},
+        #         **{word: embedding for word, embedding in zip(words_not_in_cache, embeddings_not_in_cache)}}
+
 
     def cosine_similarity(self, input1, input2)->float:
         """
@@ -249,8 +271,8 @@ class Normalizer():
             float: The cosine similarity between the two inputs.
         """
         # Convert words to vectors if necessary
-        vector1 = self.get_word_embedding(input1) if isinstance(input1, str) else input1
-        vector2 = self.get_word_embedding(input2) if isinstance(input2, str) else input2
+        vector1 = self.get_word_embedding(input1)['embeddings'][0] if isinstance(input1, str) else input1
+        vector2 = self.get_word_embedding(input2)['embeddings'][0] if isinstance(input2, str) else input2
 
         return np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
 
@@ -316,7 +338,7 @@ class Normalizer():
                 schema=schema,
                 using='default',
                 shards_num=2,
-                consistency_level="Bounded",
+                consistency_level=COSISTENCY_LEVEL,
 
             )
             status = collection.create_index(field_name="raw_string_embedding", index_params=index_params)
@@ -407,24 +429,23 @@ class Normalizer():
         list_of_notes = []
         list_of_norms = []
         list_of_additional_infos = []
-        list_of_raw_embeddings = []
+        list_of_raw_embeddings= self.get_word_embedding(df[self.header_raw_string].tolist())['embeddings']
+        # list_of_raw_embeddings_norm = self.get_word_embedding(df[self.header_norm_string].tolist())['embeddings']
+
+        # list_of_raw_embeddings = [val for pair in zip(list_of_raw_embeddings_raw, list_of_raw_embeddings_norm) for val in pair]
+
         for i, row in tqdm.tqdm(df.iterrows(), total=df.shape[0]):
             raw_string, notes, norm_string, additional_info = self.convert_to_milvus_format(row)
 
-            raw_emebedding = self.get_word_embedding(raw_string)
-            normalized_embedding = self.get_word_embedding(norm_string)
-
             list_of_raws.append(raw_string)
             list_of_norms.append(norm_string)
-            list_of_raw_embeddings.append(raw_emebedding)
             list_of_notes.append(notes)
             list_of_additional_infos.append(additional_info)
 
-            list_of_raws.append(norm_string)
-            list_of_norms.append(norm_string)
-            list_of_raw_embeddings.append(normalized_embedding)
-            list_of_notes.append(notes)
-            list_of_additional_infos.append(additional_info)
+            # list_of_raws.append(norm_string)
+            # list_of_norms.append(norm_string)
+            # list_of_notes.append(notes)
+            # list_of_additional_infos.append(additional_info)
 
         list_of_lists_for_upsert = [list_of_raws, list_of_notes, list_of_norms, list_of_additional_infos, list_of_raw_embeddings]
 
@@ -479,7 +500,7 @@ class Normalizer():
         
 
         if embedding is None:
-            embedding = self.get_word_embedding(raw_string)
+            embedding = self.get_word_embedding(raw_string)['embeddings'][0]
 
         if collection_name == 'candidates':
             self.collection_candidates.upsert([[raw_string],
@@ -535,14 +556,14 @@ class Normalizer():
             logger.info(f"Loading collection {collection.name}")
             collection.load()
 
-        norm_string = self.preprocessing(norm_string)
+        norm_string = preprocessing(norm_string)
         try:
             res = collection.query(
                     expr = f"norm_string == '{norm_string}'",
                     offset = 0,
                     limit = 1, 
                     output_fields = ["raw_string", "norm_string","additional_info", "notes"]
-                    # cosistency_level="Strong"
+                    # cosistency_level=COSISTENCY_LEVEL
                     )
         except Exception as e:
             logger.error(f"""Error while querying the collection for normalized string:
@@ -558,8 +579,7 @@ class Normalizer():
                                     string_to_search: str=None,
                                     embedding: np.array=None,
                                     collection_name: str='verified',
-                                    limit: int=1,
-                                    search_normalized: bool=False)-> Tuple[list, list]:
+                                    limit: int=1)-> Tuple[list, list]:
         """
         This function is used to performa a vector search for a string or an embedding in the index.
         Only one of string_to_search or embedding should be provided.
@@ -574,8 +594,6 @@ class Normalizer():
                 The name of the collection to be searched. Defaults to 'verified'.
             * limit (int, optional):
                 The limit of the search. Defaults to 1.
-            * search_normalized (bool, optional):
-                Whether to limit the search on normalized string. Defaults to False, and searches on all raw strings.
         
         Returns:
         ----
@@ -592,7 +610,7 @@ class Normalizer():
             raise ValueError("Neither string_to_search nor embedding were provided. One should be provided.")
         
         if string_to_search is not None:
-            embedding = self.get_word_embedding(string_to_search)
+            embedding = self.get_word_embedding(string_to_search)['embeddings'][0]
 
         if collection_name == 'candidates':
             collection = self.collection_candidates
@@ -611,21 +629,12 @@ class Normalizer():
             logger.info(f"Loading collection {collection.name}")
             collection.load()
 
-        if search_normalized:
-            res = collection.search(data=[embedding], 
-                anns_field="raw_string_embedding", 
-                param=search_params,
-                limit=limit,
-                expr="norm_string == raw_string",
-                output_fields=['raw_string', 'norm_string', 'additional_info', 'notes'],
-                consistency_level="Bounded")[0]
-        else:
-            res = collection.search(data=[embedding], 
-                anns_field="raw_string_embedding", 
-                param=search_params,
-                limit=limit,
-                output_fields=['raw_string', 'norm_string', 'additional_info', 'notes'],
-                consistency_level="Bounded")[0]
+        res = collection.search(data=[embedding], 
+            anns_field="raw_string_embedding", 
+            param=search_params,
+            limit=limit,
+            output_fields=['raw_string', 'norm_string', 'additional_info', 'notes'],
+            consistency_level=COSISTENCY_LEVEL)[0]
 
         return [hit.fields for hit in res][::-1], res.distances[::-1]
 
@@ -809,7 +818,7 @@ class Normalizer():
         normalization_info = {"type": None, "score": None}
         # get raw string embedding
         logger.info(f"Normalizing {raw_string}")
-        raw_embedding = self.get_word_embedding(raw_string)
+        raw_embedding = self.get_word_embedding(raw_string)['embeddings'][0]
 
         # check if raw string is already in the verified index using vector search
         verified_results, verified_distances = self.vector_search_on_collection(embedding=raw_embedding, collection_name='verified', limit=self.n_for_prompt)
@@ -843,9 +852,9 @@ class Normalizer():
         else:
             additional_info = additional_info_llm
             normalization_info = {"type": "new_normalized_string", "score": None}
-            logger.info(f"Normalized string {norm_string} is not in candidates. Adding it. With additional info: {additional_info}")
+            # logger.info(f"Normalized string {norm_string} is not in candidates. Adding it. With additional info: {additional_info}")
             # we add to the candidates index the normalized string as if it was a new raw string
-            self.add_to_index('candidates', norm_string, norm_string, additional_info, self.default_notes, self.get_word_embedding(norm_string), flush_db)
+            # self.add_to_index('candidates', norm_string, norm_string, additional_info, self.default_notes, self.get_word_embedding(norm_string)['embeddings'][0], flush_db)
 
         # in any case, add the couple (raw string, normalized string+associated info) to the candidates index
         self.add_to_index('candidates', raw_string, norm_string, additional_info, notes, raw_embedding, flush_db)
@@ -875,6 +884,50 @@ class JobNormalizer(Normalizer):
     
     def create_prompt(self, raw_string, verified_results):
         return super().create_prompt(raw_string, verified_results, 'data/job_roles_dataset_prompt.csv')
+    
+class JobNormalizerWithHierarchy(Normalizer):
+    # declared_job_role;hierarchical_position;normalized_job_role;general_cluster;function
+    def __init__(self):
+        super().__init__("job_with_hierarchy", 
+                         header_raw_string="declared_job_role",
+                         header_norm_string="normalized_job_role",
+                         header_notes=['hierarchical_position'],
+                         header_additional_info=["general_cluster", "function"])
+
+    def massive_add_to_index(self):
+        return super().massive_add_to_index('data/job_roles_with_hierarchical_position.csv')
+    
+    def create_prompt(self, raw_string, verified_results):
+        return super().create_prompt(raw_string, verified_results, 'data/job_roles_with_hierarchical_position_prompt.csv')
+    
+    def call_api_with_timeout(self, prompt):
+        risp = openai.Completion.create(
+                            model=MODEL_NAME_LLM,
+                            prompt=prompt,
+                            temperature=0.0,
+                            stop=["\n"],
+                            max_tokens=100,
+                            logprobs=5)
+
+        dict_acceptable_hierarchy_level = {'Special':'Specialist',
+                                          'Manager':'Manager',
+                                          'Team':'Team Leader',
+                                          'Junior':'Junior',
+                                          'Head':'Head',
+                                          'Intern':'Internship'}
+        candidates_hierarchy_level = list(risp.choices[0]['logprobs']['top_logprobs'][0])
+
+        hierarchy_level = 'Unknown'
+        for candidate_hierarchy_level in candidates_hierarchy_level:
+            if candidate_hierarchy_level in dict_acceptable_hierarchy_level:
+                hierarchy_level = dict_acceptable_hierarchy_level[candidate_hierarchy_level]
+                break
+        
+        
+        final_output = risp.choices[0]['text'].split(';')
+        final_output[0] = hierarchy_level
+        return ";".join(final_output)
+
 
     
 class LanguageNormalizer(Normalizer):

@@ -22,6 +22,7 @@ RUN poetry config virtualenvs.create false \
 
 # setting PYTHONPATH
 ENV PYTHONPATH="${PYTHONPATH}:/app"
+ENV PORT=8031
 
 # setting environment variables
 

@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
+from typing import List
 import uvicorn
-from unified_normalizer.Normalizer import SkillNormalizerOld, JobNormalizer, LanguageNormalizer, SkillNormalizerNew
+from unified_normalizer.Normalizer import SkillNormalizerOld, JobNormalizer, LanguageNormalizer, SkillNormalizerNew, JobNormalizerWithHierarchy
 
 from fastapi import FastAPI, HTTPException
 import yaml 
@@ -42,10 +43,14 @@ async def ml_lifespan_manager(app: FastAPI):
     skill_normalizer_new = SkillNormalizerNew()
     skill_normalizer_new.massive_add_to_index()
 
+    job_normalizer_with_hierarchy = JobNormalizerWithHierarchy()
+    job_normalizer_with_hierarchy.massive_add_to_index()
+
     ml_models["skill"] = skill_normalizer
     ml_models["job"] = job_normalizer
     ml_models["language"] = language_normalizer
     ml_models["skill_new"] = skill_normalizer_new
+    ml_models["job_hierarchy"] = job_normalizer_with_hierarchy
     
     yield
     # Clean up the ML models and release the resources
@@ -109,15 +114,13 @@ async def check_normalized(normalization_type: str, norm_string: str, accepted: 
 async def vector_search(normalization_type: str,
                         string_to_search: str,
                         limit: int = 1,
-                        accepted: bool = False,
-                        search_normalized: bool = False):
+                        accepted: bool = False):
     """
     This endpoint performs a vector search on a the space of previously normalized strings.
      * path_param normalization_type: The type of normalization to be used.
      * query_param string_to_search: The string to be searched in the collection
      * query_param limit: The maximum number of results to return
      * query_param accepted: A boolean value to choose if the search must be in the verified collection or in the candidates collection
-     * query_param search_normalized: A boolean value used to choose if the search must be performed on the normalized strings or on both the raw strings and the normalized strings
     ---
      * return: A JSON with this format:
         {
@@ -135,29 +138,28 @@ async def vector_search(normalization_type: str,
     normalizer = ml_models[f"{normalization_type}"]
     results, distances = normalizer.vector_search_on_collection(string_to_search=string_to_search,
                                                                 collection_name=collection_name,
-                                                                limit=limit,
-                                                                search_normalized=search_normalized)
+                                                                limit=limit)
     
     return {"results": results, "distances": distances}
 
-@app.get("/get_embedding/{normalization_type}/")
-async def get_embedding(normalization_type: str, word: str):
+@app.post("/get_embedding/{normalization_type}/")
+async def get_embedding(normalization_type: str, words: List[str]):
     """
-    This endpoint retrieves the embedding of a word.
+    This endpoint retrieves the embedding of a list of words.
     * path_param normalization_type: The type of normalization to be used.
-    * query_param word: The word to get the embedding of.
+    * query_param words: The list of words to get the embedding of.
     ---
     * return: A JSON with this format:
             {
-            "embedding": list of floats representing the word embedding
+            "embeddings": dict of words and their corresponding embeddings
             }
     """
     if normalization_type not in ml_models:
         raise HTTPException(status_code=404, 
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
     normalizer = ml_models[f"{normalization_type}"]
-    embedding = normalizer.get_word_embedding(word)
-    return {"embedding": embedding.tolist()}
+    embeddings = normalizer.get_word_embedding(words)
+    return {'words': words, 'embeddings': embeddings['embeddings'].tolist()}
 
 
 @app.get("/cosine_similarity/{normalization_type}/")
@@ -203,6 +205,9 @@ if __name__ == "__main__":
     normalizer = SkillNormalizerNew()
     normalizer.massive_add_to_index()
 
-    
+    logging.info("Adding Job normalizer with hierarchy to the index")
+    normalizer = JobNormalizerWithHierarchy()
+    normalizer.massive_add_to_index()
+
     uvicorn.run("api:app", host="0.0.0.0", port=int(config['PORT']))
 
