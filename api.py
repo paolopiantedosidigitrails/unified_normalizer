@@ -67,13 +67,13 @@ def read_root():
 def normalization(normalization_type: str,
                   name: str,
                   threshold_verified_accept: float = TRESHOLD_DIRECT_ACCEPT,
-                  threshold_verified_reject: float = TRESHOLD_CANDIDATE_ACCEPT):
+                  threshold_candidate_accept: float = TRESHOLD_CANDIDATE_ACCEPT):
     """
     This endpoint normalizes the input string and returns the normalized string
      * path_param normalization_type: The type of normalization to be used.
      * query_param name: The string to be normalized
      * query_param threshold_verified_accept: The threshold to accept the normalized string as verified
-     * query_param threshold_verified_reject: The threshold to reject the normalized string as candidate
+     * query_param threshold_candidate_accept: The threshold to reject the normalized string as candidate
      ---
      * return: The normalized string, some additional information on the normalized string and some information on the normalization process
     """
@@ -81,7 +81,7 @@ def normalization(normalization_type: str,
         raise HTTPException(status_code=404,
                             detail=f"Invalid normalization type, the available types are: {', '.join(ml_models.keys())}")
     normalizer = ml_models[f"{normalization_type}"]
-    norm, add_info, notes, norm_info = normalizer.normalize(name, threshold_verified_accept, threshold_verified_reject)
+    norm, add_info, notes, norm_info = normalizer.normalize(name, threshold_verified_accept, threshold_candidate_accept)
     return {"normalized_string": norm, "additional_info": add_info, "notes": notes, "normalization_info": norm_info}
 
 @app.get("/check_normalized/{normalization_type}/")

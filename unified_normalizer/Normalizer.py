@@ -868,6 +868,7 @@ class SkillNormalizerOld(Normalizer):
                          header_raw_string="skill_raw",
                          header_norm_string="skill_normalized",
                          header_additional_info=["domain", "field", "type_of_skill"])
+        
 
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/skills_dataset.csv')
@@ -877,7 +878,8 @@ class JobNormalizer(Normalizer):
         super().__init__("job", 
                          header_raw_string="declared_job_role",
                          header_norm_string="normalized_job_role",
-                         header_additional_info=["general_cluster", "function"])
+                         header_additional_info=["general_cluster", "function"],
+                         n_for_prompt=15)
 
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/job_roles_dataset.csv')
@@ -892,7 +894,8 @@ class JobNormalizerWithHierarchy(Normalizer):
                          header_raw_string="declared_job_role",
                          header_norm_string="normalized_job_role",
                          header_notes=['hierarchical_position'],
-                         header_additional_info=["general_cluster", "function"])
+                         header_additional_info=["general_cluster", "function"],
+                         n_for_prompt=15)
 
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/job_roles_with_hierarchical_position.csv')
@@ -935,7 +938,8 @@ class LanguageNormalizer(Normalizer):
         super().__init__("language", 
                          header_raw_string="language_raw",
                          header_norm_string="language_normalized",
-                         header_additional_info=["dead_language", "sign_language"])
+                         header_additional_info=["dead_language", "sign_language"],
+                         n_for_prompt=15)
     
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/languages.csv')
@@ -949,7 +953,8 @@ class SkillNormalizerNew(Normalizer):
                          header_raw_string="skill_raw",
                          header_norm_string="skill_normalized",
                          header_notes=["observations"],
-                         header_additional_info=["possible_domains", "possible_fields", "type_of_skill", "too_generic"])
+                         header_additional_info=["possible_domains", "possible_fields", "type_of_skill", "too_generic"],
+                         n_for_prompt=15)
         
         self.default_notes = {"observations": "no observations"}
 
