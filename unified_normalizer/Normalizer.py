@@ -889,8 +889,8 @@ class JobNormalizer(Normalizer):
     
 class JobNormalizerWithHierarchy(Normalizer):
     # declared_job_role;hierarchical_position;normalized_job_role;general_cluster;function
-    def __init__(self):
-        super().__init__("job_with_hierarchy", 
+    def __init__(self, test=""):
+        super().__init__("job_with_hierarchy"+test, 
                          header_raw_string="declared_job_role",
                          header_norm_string="normalized_job_role",
                          header_notes=['hierarchical_position'],

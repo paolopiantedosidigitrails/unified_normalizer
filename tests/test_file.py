@@ -114,7 +114,7 @@ def test_prompt_element_collection_creation():
 
 def test_prompt_creation_skills():
     try:
-        normalizer = SkillNormalizerOld()
+        normalizer = SkillNormalizerOld(test="_test")
         normalizer.massive_add_to_index()
         response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test',
                                                                     collection_name = 'verified',
@@ -129,7 +129,7 @@ def test_prompt_creation_skills():
 
 def test_LLM_call_skill():
     try:
-        normalizer = SkillNormalizerOld()
+        normalizer = SkillNormalizerOld(test="_test")
         normalizer.massive_add_to_index()
         response, distance =  normalizer.vector_search_on_collection(string_to_search= 'test', collection_name = 'verified', limit=10)
         norm, additional_info, notes = normalizer.LLM_call('random_skill', response)
@@ -306,7 +306,7 @@ def test_check_if_normalized_is_in_collection():
 
 def test_language_normalizer():
     try:
-        normalizer = LanguageNormalizer()
+        normalizer = LanguageNormalizer(test="_test")
         normalizer.massive_add_to_index()
 
         norm, additional_info, notes, norm_info = normalizer.normalize('Langues de Signes Allemandes')
@@ -372,12 +372,12 @@ def test_massive_add_skip():
     try:
 
         t = time.time()
-        normalizer = LanguageNormalizer()
+        normalizer = LanguageNormalizer(test="_test")
         normalizer.massive_add_to_index()
         t = time.time() - t
 
         t2 = time.time()
-        normalizer = LanguageNormalizer()
+        normalizer = LanguageNormalizer(test="_test")
         normalizer.massive_add_to_index()
         t2 = time.time() - t2
         print(f"First massive add took {t} seconds, second took {t2} seconds")
@@ -430,7 +430,7 @@ def test_notes():
 
 def test_speed():
     try:
-        language_normalizer = LanguageNormalizer()
+        language_normalizer = LanguageNormalizer(test="_test")
         language_normalizer.massive_add_to_index()
 
         t = time.time()
@@ -447,7 +447,7 @@ def test_speed():
 
 def test_job_role_normalizer():
     try:
-        normalizer = JobNormalizer()
+        normalizer = JobNormalizer(test="_test")
         normalizer.massive_add_to_index()
 
         norm, additional_info, notes, norm_info = normalizer.normalize('Data Scientist')
@@ -463,7 +463,7 @@ def test_job_role_normalizer():
 
 def test_job_role_normalizer_with_hierarchy():
     try:
-        normalizer = JobNormalizerWithHierarchy()
+        normalizer = JobNormalizerWithHierarchy(test="_test")
         normalizer.massive_add_to_index()
 
         norm, additional_info, notes, norm_info = normalizer.normalize('Data and systems manager')
@@ -495,7 +495,7 @@ def test_job_role_normalizer_with_hierarchy():
 
 def test_new_skill_normalizer():
     try:
-        normalizer = SkillNormalizerNew()
+        normalizer = SkillNormalizerNew(test="_test")
 
         norm, additional_info, notes, norm_info = normalizer.normalize('Data Sciennce')
 
