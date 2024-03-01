@@ -863,8 +863,8 @@ class Normalizer():
 
 
 class SkillNormalizerOld(Normalizer):
-    def __init__(self):
-        super().__init__("skill",
+    def __init__(self, test=""):
+        super().__init__("skill"+test,
                          header_raw_string="skill_raw",
                          header_norm_string="skill_normalized",
                          header_additional_info=["domain", "field", "type_of_skill"])
@@ -874,8 +874,8 @@ class SkillNormalizerOld(Normalizer):
         return super().massive_add_to_index('data/skills_dataset.csv')
     
 class JobNormalizer(Normalizer):
-    def __init__(self):
-        super().__init__("job", 
+    def __init__(self, test=""):
+        super().__init__("job"+test, 
                          header_raw_string="declared_job_role",
                          header_norm_string="normalized_job_role",
                          header_additional_info=["general_cluster", "function"],
@@ -934,8 +934,8 @@ class JobNormalizerWithHierarchy(Normalizer):
 
     
 class LanguageNormalizer(Normalizer):
-    def __init__(self):
-        super().__init__("language", 
+    def __init__(self, test=""):
+        super().__init__("language"+test, 
                          header_raw_string="language_raw",
                          header_norm_string="language_normalized",
                          header_additional_info=["dead_language", "sign_language"],
@@ -948,8 +948,8 @@ class LanguageNormalizer(Normalizer):
         return super().create_prompt(raw_string, verified_results, 'data/languages_prompt.csv')
     
 class SkillNormalizerNew(Normalizer):
-    def __init__(self):
-        super().__init__("new_skill", 
+    def __init__(self, test=""):
+        super().__init__("new_skill"+test, 
                          header_raw_string="skill_raw",
                          header_norm_string="skill_normalized",
                          header_notes=["observations"],
