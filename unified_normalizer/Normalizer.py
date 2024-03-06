@@ -11,7 +11,6 @@ import openai
 from dotenv import load_dotenv
 import os
 from concurrent.futures import TimeoutError
-import concurrent.futures
 import tqdm
 import yaml
 # from rwkv.model import RWKV

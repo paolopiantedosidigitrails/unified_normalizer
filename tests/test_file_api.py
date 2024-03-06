@@ -1,5 +1,4 @@
 import pytest  # noqa: F401
-import uvicorn  
 import yaml
 import requests
 import os
