@@ -17,6 +17,7 @@ import yaml
 # from rwkv.model import RWKV
 # from rwkv.utils import PIPELINE, PIPELINE_ARGS
 import numba
+import time
 
 load_dotenv()
 
@@ -44,6 +45,8 @@ DEVICE = os.getenv('DEVICE', config['DEVICE'])
 COSISTENCY_LEVEL = os.getenv('COSISTENCY_LEVEL', config['COSISTENCY_LEVEL'])
 
 os.environ['RWKV_JIT_ON'] = '1'
+
+max_retries = 6
 
 # Set up logging
 # logging.basicConfig(filename='normalizer.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=getattr(logging, LOGGING_LEVEL))
@@ -169,57 +172,6 @@ class Normalizer():
                 The embedding of the input word.
         """
 
-        # if utility.has_collection("cache_raw_embedding"):
-        #     logger.info("Index cache_raw_embedding already exists.")
-        #     collection_cache = Collection("cache_raw_embedding")
-        # else:
-        #     raw_string = FieldSchema(
-        #         name="raw_string",
-        #         dtype=DataType.VARCHAR,
-        #         max_length=200,
-        #         is_primary=True)
-
-        #     data_type = FieldSchema(
-        #         name="data_type",
-        #         dtype=DataType.VARCHAR,
-        #         max_length=200,
-        #         default_value="Unknown"
-        #     )
-
-        #     raw_string_embedding = FieldSchema(
-        #         name="raw_string_embedding",
-        #         dtype=DataType.FLOAT_VECTOR,
-        #         dim=768
-        #     )
-
-        #     index_params_vector = {
-        #         "metric_type": "IP",
-        #         "index_type": "IVF_FLAT",
-        #         "params": {
-        #             "nlist": 16384,
-        #             "nprobe": 16,
-        #         }
-        #     }
-
-        #     schema = CollectionSchema(
-        #         fields=[raw_string, data_type, raw_string_embedding],
-        #         description="Cache for raw string embeddings",
-        #         enable_dynamic_field=True
-        #     )
-        #     collection_cache = Collection(
-        #         name="cache_raw_embedding",
-        #         schema=schema,
-        #         using='default',
-        #         shards_num=2
-        #     )
-        #     status = collection_cache.create_index(field_name="raw_string_embedding", index_params=index_params_vector)
-        #     logger.info(f"vector index cache_raw_embedding created. Status: {status}")
-        #     logger.info(f"Loading collection {collection_cache.name}")
-        #     collection_cache.load()
-
-        # if str(utility.load_state(collection_cache.name))=='NotLoad':
-        #     raise ValueError(f"Collection {collection_cache.name} is not loaded.")
-        
         if isinstance(words, str):
             words = [words]
 
@@ -227,36 +179,6 @@ class Normalizer():
         embeddings = EMBEDDING_MODEL.encode(words)
 
         return {'words': words, 'embeddings': embeddings}
-
-        # words = [preprocessing(word) for word in words]
-
-        # try: 
-        #     res = collection_cache.query(
-        #             expr = f"raw_string in {words}",
-        #             offset = 0,
-        #             limit = 1,
-        #             output_fields = ["raw_string_embedding", "raw_string"]
-        #             )
-        # except Exception as e:
-        #     logger.error(f"""Error while querying the cache for words:
-        #                 {words}.""")
-        #     logger.error(e)
-        #     return None
-        
-        # words_in_cache = [r['raw_string'] for r in res]
-        # emnbeddings_in_cache = [r['raw_string_embedding'] for r in res]
-        # words_not_in_cache = [word for word in words if word not in words_in_cache]
-
-        # if len(words_not_in_cache) > 0:
-        #     logger.info(f"Words {words_not_in_cache} not in cache. Calculating embeddings.")
-        #     embeddings_not_in_cache = EMBEDDING_MODEL.encode(words_not_in_cache)
-        #     collection_cache.upsert([words_not_in_cache, [self.norm_type]*len(words_not_in_cache), embeddings_not_in_cache])
-        # else:
-        #     embeddings_not_in_cache = []
-            
-        # return {**{word: embedding for word, embedding in zip(words_in_cache, emnbeddings_in_cache)},
-        #         **{word: embedding for word, embedding in zip(words_not_in_cache, embeddings_not_in_cache)}}
-
 
     def cosine_similarity(self, input1, input2)->float:
         """
@@ -276,21 +198,23 @@ class Normalizer():
 
         return np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
 
-    def get_or_create_collection(self, index_name, description):
+    def get_or_create_collection(self, collection_name, description):
         """
         This function gets or creates a collection in Milvus. If the collection already exists, it is returned. 
         If it does not exist, it is created with the specified index name and description, and then returned.
 
         Args:
-            index_name (str): The name of the index.
+            collection_name (str): The name of the index.
             description (str): The description of the index.
 
         Returns:
             Collection: The collection with the specified index name that will be used for the normalizer.
         """
-        if utility.has_collection(index_name):
-            logger.info(f"Index {index_name} already exists.")
-            return Collection(index_name)
+
+        if utility.has_collection(collection_name):
+            logger.info(f"Index {collection_name} already exists.")
+            collection = Collection(collection_name)
+            
         else:
             raw_string = FieldSchema(
                 name="raw_string",
@@ -319,6 +243,21 @@ class Normalizer():
                 dim=768
             )
 
+            schema = CollectionSchema(
+                fields=[raw_string, notes, norm_string, additional_info, raw_string_embedding],
+                description=description,
+                enable_dynamic_field=True
+            )
+            collection = Collection(
+                name=collection_name,
+                schema=schema,
+                using='default',
+                shards_num=2,
+                consistency_level=COSISTENCY_LEVEL,
+            )
+
+        if len(utility.list_indexes(collection_name))<2:
+            
             index_params = {
                 "metric_type": "IP",
                 "index_type": "IVF_FLAT",
@@ -327,25 +266,13 @@ class Normalizer():
                     "nprobe": 16,
                 }
             }
-
-            schema = CollectionSchema(
-                fields=[raw_string, notes, norm_string, additional_info, raw_string_embedding],
-                description=description,
-                enable_dynamic_field=True
-            )
-            collection = Collection(
-                name=index_name,
-                schema=schema,
-                using='default',
-                shards_num=2,
-                consistency_level=COSISTENCY_LEVEL,
-
-            )
+            
             status = collection.create_index(field_name="raw_string_embedding", index_params=index_params)
-            logger.info(f"Index {index_name} created. Status: {status}")
-            status = collection.create_index(field_name="norm_string", index_name=f"{index_name}_norm_string_index")
+            logger.info(f"Index {collection_name} created. Status: {status}")
+            status = collection.create_index(field_name="norm_string", index_name=f"{collection_name}_norm_string_index")
             logger.info(f"norm_string index cache_raw_embedding created. Status: {status}")
-            return collection
+
+        return collection
 
     def get_or_create_indices(self):
         """
@@ -740,41 +667,46 @@ class Normalizer():
             # load csv_prompt
         prompt = self.create_prompt(raw_string, verified_results)
 
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            # future = executor.submit(self.call_rwkv, prompt)
-            future = executor.submit(self.call_api_with_timeout, prompt)
+        llm_call_failed = True
+        for i in range(max_retries):
             try:
-                resp = future.result(timeout=10)  # timeout in seconds
-            except concurrent.futures.TimeoutError:
-                logging.error("API call timed out.")
-                raise TimeoutError("API call timed out.")
-            
-        try:
-            list_response_llm = resp.split(';')
-            norm_position = 0
+                resp = self.call_api_with_timeout(prompt)
+                llm_call_failed = False
+                break
+            except Exception as e:
+                logging.warn(f"error: {e}")
+                logging.warn(f"API call timed out. Attempt {i+1} of {max_retries}.")
+                time.sleep(2 ** i)  # exponential backoff
+        if llm_call_failed:
+            raise TimeoutError("API call timed out after maximum number of retries.")
+        else:
+            logging.info(f"API call successful after {i+1} attempts.")
+            try:
+                list_response_llm = resp.split(';')
+                norm_position = 0
 
-            if self.header_notes is not None:
-                notes = {k:v for k,v in zip(self.header_notes, list_response_llm[:len(self.header_notes)])}
-                norm_position = len(self.header_notes)
-            else:
-                notes = None
-            
-            norm_string = list_response_llm[norm_position]
+                if self.header_notes is not None:
+                    notes = {k:v for k,v in zip(self.header_notes, list_response_llm[:len(self.header_notes)])}
+                    norm_position = len(self.header_notes)
+                else:
+                    notes = None
+                
+                norm_string = list_response_llm[norm_position]
 
-            if self.header_additional_info is not None:
-                additional_info = {k:v for k,v in zip(self.header_additional_info, list_response_llm[norm_position+1:])}
-            else:
-                additional_info = None
+                if self.header_additional_info is not None:
+                    additional_info = {k:v for k,v in zip(self.header_additional_info, list_response_llm[norm_position+1:])}
+                else:
+                    additional_info = None
 
-            return norm_string, additional_info, notes
-        except Exception as e:
-            logging.error(f"""
-            --- LLM response not valid. ---
-            -> Response: {resp}
-            -> Prompt: {prompt}
-            -> Error: {e}
-            """)
-            return None, None, None
+                return norm_string, additional_info, notes
+            except Exception as e:
+                logging.error(f"""
+                --- LLM response not valid. ---
+                -> Response: {resp}
+                -> Prompt: {prompt}
+                -> Error: {e}
+                """)
+                return None, None, None
 
     def normalize(self, raw_string,
                 threshold_verified_accept=None,
@@ -818,6 +750,9 @@ class Normalizer():
         normalization_info = {"type": None, "score": None}
         # get raw string embedding
         logger.info(f"Normalizing {raw_string}")
+        if len(raw_string) > 200:
+            logger.warning(f"Raw string {raw_string} is too long. Truncating it.")
+            raw_string = raw_string[:200]
         raw_embedding = self.get_word_embedding(raw_string)['embeddings'][0]
 
         # check if raw string is already in the verified index using vector search

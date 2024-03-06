@@ -1,0 +1,803 @@
+skill_raw;skill_normalized;domain;field;type_of_skill
+.NET;.NET;Computer Science, Software Engineering;IT;Hard
+.NET CLR;.NET;Computer Science, Software Engineering;IT;Hard
+.NET Compact Framework;.NET;Computer Science, Software Engineering;IT;Hard
+.NET Framework;.NET;Computer Science, Software Engineering;IT;Hard
+.NET Remoting;.NET;Computer Science, Software Engineering;IT;Hard
+.Net Core;.NET;Computer Science, Software Engineering;IT;Hard
+1-Wire;1-Wire;Electronics, Electrical Wiring;Electronics;Hard
+1wire;1-Wire;Electronics, Electrical Wiring;Electronics;Hard
+one wire;1-Wire;Electronics, Electrical Wiring;Electronics;Hard
+one-wire;1-Wire;Electronics, Electrical Wiring;Electronics;Hard
+Account Management;Account Management;Account Management;General;Hard, Soft
+Key Account Management;Account Management;Account Management;General;Hard, Soft
+Key-Account-Management;Account Management;Account Management;General;Hard, Soft
+Senior Account;Account Management;Account Management;General;Hard, Soft
+Accountancy;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Accounting;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Accounting nician;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Administrative Assistant;Administrative Assistance;Operations;General;Hard
+Administrative help 20%;Administrative Assistance;Operations;General;Hard
+Balance sheet analysis;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Big 4;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Estimated financial statements;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Financial statements;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+IFRS U.S. GAAP Swiss;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+International Tax;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Payroll;Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Active Directory;Active Directory;Software Engineering, Operations;IT;Hard
+Active Directory Experience;Active Directory;Software Engineering, Operations;IT;Hard
+Azure Active Directory;Active Directory;Software Engineering, Operations;IT;Hard
+Adobe Creative Suite;Adobe Creative Suite;Design, Art, Modeling;Design;Hard
+Illustrator;Adobe Illustrator;Design, Art, Modeling;Design;Hard
+Adobe Illustrator;Adobe Illustrator;Design, Art, Modeling;Design;Hard
+Indesign;Adobe InDesign;Design, Art, Modeling;Design;Hard
+Adobe Lightroom;Adobe Lightroom;Design, Art, Modeling;Design;Hard
+Lightroom;Adobe Lightroom;Design, Art, Modeling;Design;Hard
+Lightroom Mobile;Adobe Lightroom;Design, Art, Modeling;Design;Hard
+Omnitures;Adobe Omniture;Data Analytics;IT, Statistics;Hard
+Mapp Intelligence;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Mapp;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Omniture;Adobe Omniture;Data Analytics;IT, Statistics;Hard
+Photoshop;Adobe Photoshop;Design, Art, Modeling;Design;Hard
+Adobe Photoshop;Adobe Photoshop;Design, Art, Modeling;Design;Hard
+Advertising;Advertising;Marketing;Marketing;Hard, Soft
+Ad Trafficker;Advertising;Marketing;Marketing;Hard, Soft
+Advert;Advertising;Marketing;Marketing;Hard, Soft
+Associate Consultant SEA;Advertising;Marketing;Marketing;Hard, Soft
+Display Advertising;Advertising;Marketing;Marketing;Hard, Soft
+Display-Werbung;Advertising;Marketing;Marketing;Hard, Soft
+Online Advertising;Advertising;Marketing;Marketing;Hard, Soft
+PPC;Advertising;Marketing;Marketing;Hard, Soft
+SEA;Advertising;Marketing;Marketing;Hard, Soft
+Search Advertising;Advertising;Marketing;Marketing;Hard, Soft
+promotion;Advertising;Marketing;Marketing;Hard, Soft
+Affiliate Marketing;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliate;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliate Management;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliate Networks;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliate Relations;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliate Window;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Affiliates;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+CJ Affiliate;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+EBay Affiliate Network;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Google Affiliate Network;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Post Affiliate Pro;Affiliate Marketing;Marketing;Marketing;Hard, Soft
+Artificial Intelligence;AI;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Algorithm Analysis;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Algorithm Design;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Algorithm Development;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Algorithm Optimization;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Approximation Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Compression Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Distributed Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Evolutionary Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Genetic Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Optimization Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Parallel Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Scheduling Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Search Algorithms;Algorithms;Software Engineering, Data Science;IT, Statistics;Hard
+Android;Android Development;Software Engineering, Mobile Development;IT;Hard
+AIR for Android Extension;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Development;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Games;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android SDK;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Studio;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Support;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Testing;Android Development;Software Engineering, Mobile Development;IT;Hard
+Android Wear;Android Development;Software Engineering, Mobile Development;IT;Hard
+Angular;Angular;Software Engineering;IT;Hard
+AngularFire;Angular;Software Engineering;IT;Hard
+AngularJS;Angular;Software Engineering;IT;Hard
+Ansible;Ansible;Software Engineering, Operations;IT;Hard
+ansble;Ansible;Software Engineering, Operations;IT;Hard
+apache;Apache;Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Airflow;Apache Airflow;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Apache Ant;Apache Ant;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Camel;Apache Camel;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Commons;Apache Commons;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Cordova;Apache Cordova;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache CXF;Apache CXF;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Derby;Apache Derby;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache FOP;Apache FOP;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Foundation;Apache Foundation;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache HTTP Server;Apache HTTP Server;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Ivy;Apache Ivy;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Kafka;Apache Kafka;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Mesos;Apache Mesos;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache MyFaces Tomahawk;Apache MyFaces Tomahawk;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Pig;Apache Pig;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Spark;Apache Spark;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Storm;Apache Storm;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Tiles;Apache Tiles;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Tomcat;Apache Tomcat;Computer Science, DevOps, Software Engineering;IT;Hard
+Apache Velocity;Apache Velocity;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+Apache ZooKeeper;Apache ZooKeeper;Data Analytics, Data Science, Data Engineering, Computer Science, DevOps, Software Engineering;IT;Hard
+ASP.NET;ASP.NET;Computer Science, Software Engineering;IT;Hard
+ASP.NET AJAX;ASP.NET;Computer Science, Software Engineering;IT;Hard
+ASP.NET Core;ASP.NET;Computer Science, Software Engineering;IT;Hard
+ASP.NET Core MVC;ASP.NET;Computer Science, Software Engineering;IT;Hard
+ASP.NET MVC;ASP.NET;Computer Science, Software Engineering;IT;Hard
+ASP.NET Web API;ASP.NET;Computer Science, Software Engineering;IT;Hard
+AspDotNetStorefront;ASP.NET;Computer Science, Software Engineering;IT;Hard
+Auditing;Auditing;General;General;Hard
+AutoCAD;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD 360;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD Architecture;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD Civil 3D;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD LT;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD MEP;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD Mechanical;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD P&ID;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD Plant 3D;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD WS;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+AutoCAD for Mac;AutoCAD;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Inventor;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk 360;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk InfraWorks;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk MotionBuilder;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Robot Structural Analysis;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Smoke;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Software;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Tinkercad;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Autodesk Vault;Autodesk Suite;Design, Product Management, Engineering, UX;Design;Hard
+Automation;Automation;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Integration;Automation;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Process automation;Automation;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Process optimization;Automation;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+AWS Lambda;AWS;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Amazon Web Services (AWS);AWS;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Azure Databricks;Microsoft Azure;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Databricks;Microsoft Azure;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+B2B-Marketing;B2B Marketing;Marketing;Marketing, Sales;Hard, Soft
+Business-to-business;B2B Marketing;Marketing;Marketing, Sales;Hard, Soft
+Backend Development;Backend Development;Software Engineering, Mobile Development;IT;Hard
+Backend-Webentwicklung;Backend Development;Software Engineering, Mobile Development;IT;Hard
+Backup Management;Backup Management;Software Engineering, Computer Science;IT;Hard
+Backup & Recovery Systems;Backup Management;Software Engineering, Computer Science;IT;Hard
+Backup Exec;Backup Management;Software Engineering, Computer Science;IT;Hard
+Backup Solutions;Backup Management;Software Engineering, Computer Science;IT;Hard
+Backup and Recovery;Backup Management;Software Engineering, Computer Science;IT;Hard
+BackupPC;Backup Management;Software Engineering, Computer Science;IT;Hard
+Data Backup Solutions;Backup Management;Software Engineering, Computer Science;IT;Hard
+NT Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Network Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Offsite Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Online Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Symantec Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Syncsort Backup Express;Backup Management;Software Engineering, Computer Science;IT;Hard
+Tape Backup;Backup Management;Software Engineering, Computer Science;IT;Hard
+Veeam Backup & Replication;Backup Management;Software Engineering, Computer Science;IT;Hard
+Banana accounting;Banana Accounting;Accounting, Finance, Operations;General, Legal;Hard
+banana;Banana Accounting;Accounting, Finance, Operations;General, Legal;Hard
+banana software;Banana Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Bash;Bash;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Shell Scripting;Bash;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Benefits Administration;Benefits Administration;HR;HR;Hard
+Health & Welfare Benefits Administration;Benefits Administration;HR;HR;Hard
+Health Benefits Administration;Benefits Administration;HR;HR;Hard
+big data;Big Data;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Big Data Analytics;Big Data;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Bioconjugate Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Bioinorganic Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Bioorganic Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Biophysical Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Carbohydrate Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Protein Chemistry;Biochemistry;Chemistry, Research, Biology;Research;Hard
+Blender;Blender;Design, Art, Modeling;Design;Hard
+Image Blender;Blender;Design, Art, Modeling;Design;Hard
+Blog;Blogging;Content Marketing, Digital Marketing;Marketing;Hard, Soft
+Blogging;Blogging;Content Marketing, Digital Marketing;Marketing;Hard, Soft
+Branch Accounting;Branch Accounting;Accounting, Finance, Operations;General, Legal;Hard
+Personal branding;Brand Design;Design;Design;Hard, Soft
+Audio Branding;Brand Design;Design;Design;Hard, Soft
+Brand Design;Brand Design;Design;Design;Hard, Soft
+Brand Activation;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Advertising;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Ambassadorship;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Architecture;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Asset Management;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Awareness;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Awareness Programs;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Consultancy;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Equity;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Equity Development;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Essence;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Evolution;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Extensions;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Finance;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Health Tracking;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Identity;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Implementation;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Language;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Leverage;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Licensing;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Loyalty;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Marketing;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Measurement;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Perception;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Performance;Performance Analysis;Data Analysis, Marketing;Marketing;Hard, Soft
+Brand Personality;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Positioning Strategies;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Protection;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Strategy;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Strengthening;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brand Tracking;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branded Content;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branded Content Development;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branded Entertainment;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branded Environments;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branding & Identity;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branding & Identity Marketing;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branding Consultancy;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Branding Research;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Channel Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Co-branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Consumer Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Corporate Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Emotional Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Employer Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Global Brand Development;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Integrated Brand Marketing;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Launching New Brands;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Lifestyle Brands;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Luxury Brand Marketing;Luxury Management;Design, Marketing, Sales;Marketing;Hard, Soft
+Nation Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Online Brand Building;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Online Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Place Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Private Brands;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Retail Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Strategic Brand Consulting;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Strategic Brand Positioning;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Website Branding;Brand Marketing;Design, Marketing;Design, Marketing;Hard, Soft
+Brochure;Typography;Typography, Design;Typography, Design;Hard
+Brochure Production;Typography;Typography, Design;Typography, Design;Hard
+Brochure Websites;Typography;Typography, Design;Typography, Design;Hard
+Brochures;Typography;Typography, Design;Typography, Design;Hard
+Company Brochures;Typography;Typography, Design;Typography, Design;Hard
+E-brochures;Typography;Typography, Design;Typography, Design;Hard
+Investigator Brochures;Typography;Typography, Design;Typography, Design;Hard
+Sales Brochures;Typography;Typography, Design;Typography, Design;Hard
+Cost Control;Budgeting;Accounting, Finance, Operations;General, Legal;Hard
+Stesura on budget;Budgeting;Accounting, Finance, Operations;General, Legal;Hard
+Business Analysis;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+Business Analysis Planning & Monitoring;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+Business Analytics;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+General Business Analysis;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+ISEB Business Analysis Essentials;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+ISEB Diploma in Business Analysis;Business Analysis;Accounting, Finance, Operations;General, Legal;Hard
+Hilfsassistentin - Institute of Marketing and Business Management;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+Business Development;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+Business Development Intern;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+International Business;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+Internationales Management;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+Junior Strategy Consultant;Business Development;Sales, Marketing, Operations;Sales, Operations;Soft
+BI;Business Intelligence;Data Analytics;IT;Hard
+Business Intelligence;Business Intelligence;Data Analytics;IT;Hard
+Business Planning;Business Planning;Sales, Operations;Sales, Operations;Hard, Soft
+Business plan;Business Planning;Sales, Operations;Sales, Operations;Hard, Soft
+Business Process;Business Process;Sales, Operations;Sales, Operations;Hard, Soft
+Business Process Improvement;Business Process;Sales, Operations;Sales, Operations;Hard, Soft
+Business Strategy;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+IT & Business Strategy Alignment;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+IT Business Strategy;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+International Business Strategy;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+Internet Business Strategy;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+Sustainable Business Strategies;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+C;Clang;Software Engineering;IT;Hard
+C#;C#;Software Engineering;IT;Hard
+C++;C++;Software Engineering;IT;Hard
+C++ Builder;C++;Software Engineering;IT;Hard
+C++/CLI;C++;Software Engineering;IT;Hard
+C++0x;C++;Software Engineering;IT;Hard
+CAD;CAD;Design, Product Management, Engineering, UX;Design;Hard
+2D CAD Drawing;CAD;Design, Product Management, Engineering, UX;Design;Hard
+3D, Animation und CAD;CAD;Design, Product Management, Engineering, UX;Design;Hard
+3D, animación y CAD;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CAD Illustration;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CAD Standards;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CAD Tools;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CAD/CAM;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CAD/CAM Software;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CADAM;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CADDS5;CAD;Design, Product Management, Engineering, UX;Design;Hard
+CADs;CAD;Design, Product Management, Engineering, UX;Design;Hard
+Derivation rules;Calculus;Mathematics, Data Science;Research;Hard
+CanOE;CanOE;Software Engineering, DevOps;IT;Hard
+canoe tool;CanOE;Software Engineering, DevOps;IT;Hard
+Canoeing;Canoeing;Sports;Sports;Hard
+Change Management;Change Management;Operations, HR;HR, General;Hard, Soft
+Change Management;Change Management;Operations, HR;HR, General;Hard, Soft
+digitization;Change Management;Operations, HR;HR, General;Hard, Soft
+Characterization;Characterization;Design, Product Management, Engineering, UX;Design;Hard
+Device Characterization;Characterization;Design, Product Management, Engineering, UX;Design;Hard
+Site Characterization;Characterization;Design, Product Management, Engineering, UX;Design;Hard
+Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Chemistry Education;Chemistry;Chemistry, Research;Research;Hard
+Coordination Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Flow Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Forensic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+General Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Inorganic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Organic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Organometallic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Physical Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Physical Organic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Polymer Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Supramolecular Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Surface Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Synthetic Organic Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Theoretical Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Wet Chemistry;Chemistry;Chemistry, Research;Research;Hard
+Cisco IOS;Cisco Systems;Software Engineering, DevOps;IT;Hard
+Cisco nologies;Cisco Systems;Software Engineering, DevOps;IT;Hard
+Civil Engineering;Civil Engineering;Civil Engineering;Engineering;Hard
+Civil Engineering Design;Civil Engineering;Civil Engineering;Engineering;Hard
+Civil Engineering Drafting;Civil Engineering;Civil Engineering;Engineering;Hard
+Cloud-Computing;Cloud-Computing;Software Engineering, DevOps;IT;Hard
+Distributed Systems;Cloud-Computing;Software Engineering, DevOps;IT;Hard
+CMMS;CMS;Copywriting, Digital Marketing, Software Engineering;Marketing, IT;Hard, Soft
+CMS;CMS;Copywriting, Digital Marketing, Software Engineering;Marketing, IT;Hard, Soft
+Coaching;Employee Training and Development;General;General;Soft
+Tutoring;Employee Training and Development;General;General;Soft
+cogns;Cognos;Data Analytics, Data Science;IT, Statistics;Hard
+Cognos;Cognos;Data Analytics, Data Science;IT, Statistics;Hard
+Cognos ReportNet;Cognos;Data Analytics, Data Science;IT, Statistics;Hard
+Cognos Upfront;Cognos;Data Analytics, Data Science;IT, Statistics;Hard
+cognos tool;Cognos;Data Analytics, Data Science;IT, Statistics;Hard
+Communication;Communication;General;Communication;Soft
+Corporate Communications;Communication;General;Communication;Soft
+Customer Relations;Customer Relationship Management;Customer Relationship Management;Sales, Marketing;Hard
+Formulation;Communication;General;Communication;Soft
+Internal Communications;Communication;General;Communication;Soft
+Interpersonal Communication;Communication;General;Communication;Soft
+Interpersonal relationships;Interpersonal Skills;General;General;Soft
+Marketing communication;Communication;General;Communication;Soft
+Oratory;Communication;General;Communication;Soft
+PR & Communications Specialist;Communication;General;Communication;Soft
+Public Relations;Communication;General;Communication;Soft
+Public Speaking;Communication;General;Communication;Soft
+Storytelling;Communication;General;Communication;Soft
+comms;Communication;General;Communication;Soft
+Moderation;Community Management;General, Social Media Management;Communication;Soft
+Analytical Chemistry;Computational Chemistry;Chemistry, Research, Computer Science;Research, IT;Hard
+Combinatorial Chemistry;Computational Chemistry;Chemistry, Research, Computer Science;Research, IT;Hard
+Computational Chemistry;Computational Chemistry;Chemistry, Research, Computer Science;Research, IT;Hard
+Formulation Chemistry;Computational Chemistry;Chemistry, Research, Computer Science;Research, IT;Hard
+Quantum Chemistry;Computational Chemistry;Chemistry, Research, Computer Science;Research, IT;Hard
+Computer Hardware;Computer Hardware Maintenance;General, Electrical Wiring;IT;Hard
+Computer Maintenance;Computer Hardware Maintenance;General, Electrical Wiring;IT;Hard
+Computer programming;Computer Programming;Computer Science;IT;Hard
+OOP;Computer Programming;Computer Science;IT;Hard
+Object Oriented Design;Computer Programming;Computer Science;IT;Hard
+Object-Oriented Programming (OOP);Computer Programming;Computer Science;IT;Hard
+Computer Science;Computer Science;General, Computer Science;IT;Hard
+HP-UX;Computer Science;General, Computer Science;IT;Hard
+HXC;Computer Science;General, Computer Science;IT;Hard
+Informatique;Computer Science;General, Computer Science;IT;Hard
+Lotus Notes;Computer Science;General, Computer Science;IT;Hard
+Concept design;User Experience Design;Design, Product Management, Engineering, UX;Design;Hard
+Concept Development;Concept Design;Design, Product Management, Engineering, UX;Design;Hard
+Concrete;Construction;Construction, Civil Engineering;General, Engineering;Hard
+Construction;Construction;Construction, Civil Engineering;General, Engineering;Hard
+Construction Management;Construction;Construction, Civil Engineering;General, Engineering;Hard
+Consultant;Consultancy;General;General;Soft
+Consulting;Consultancy;General;General;Soft
+Consumer Behavior;Consumer Behavior Analysis;SEO, CRO, Design, UX;Marketing, Design;Hard
+Consumer Behaviour;Consumer Behavior Analysis;SEO, CRO, Design, UX;Marketing, Design;Hard
+Consumer Products;Consumer Behavior Analysis;SEO, CRO, Design, UX;Marketing, Design;Hard
+Online content creation;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Content Director;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Content Freelancerin;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Content Management;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Content Marketing;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Content Strategy;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Web Content;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Web Content Management;Content Marketing;Content Marketing;Marketing;Hard, Soft
+Jenkins;DevOps;Software Engineering, DevOps;IT;Hard
+Seocopywriter;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+Copywriting;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+Creative Writing;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+Internet content copywriting;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+SEO Copywriting;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+Writing;Copywriting;SEO, Marketing;Marketing;Hard, Soft
+Corporate Finance;Corporate Finance;Accounting, Finance, Operations;General, Legal, Finance;Hard
+corporate governance;Corporate Governance;Operations, Legal;Operations, Legal;Hard, Soft
+corporate strategy;Business Strategy;Sales, Operations;Sales, Operations;Hard, Soft
+Cosmetics;Makeup Artistry and Application;Cosmetics, Beauty Industry;Beauty Industry;Hard, Soft
+Group therapy;Counceling;Psychology;Psychology, Communication;Hard
+CRM;Customer Relationship Management;Customer Relationship Management;Sales, Marketing;Hard
+CRO;CRO;SEO, CRO, Design, UX;Marketing, Design;Hard
+Conversion rate optimization;CRO;SEO, CRO, Design, UX;Marketing, Design;Hard
+CSS;CSS;Software Engineering;IT;Hard
+Cascading Style Sheets (CSS);CSS;Software Engineering;IT;Hard
+Customer Relationship Management (CRM);Customer Relationship Management;Customer Relationship Management;Sales, Marketing;Hard
+Customer Satisfaction;Customer Relationship Management;Customer Relationship Management;Sales, Marketing;Hard
+Customer Care;Customer Support;General, Sales;General, Sales;Hard, Soft
+Customer care assistant/Press officer;Customer Support;General, Sales;General, Sales;Hard, Soft
+Front office;Customer Support;General, Sales;General, Sales;Hard, Soft
+Reception- und Servicemitarbeiterin;Customer Support;General, Sales;General, Sales;Hard, Soft
+nical Support;Customer Support;General, Sales;General, Sales;Hard, Soft
+Thesis Desk Manager;Customer Support;General, Sales;General, Sales;Hard, Soft
+customer service;Customer Support;General, Sales;General, Sales;Hard, Soft
+customer service employee;Customer Support;General, Sales;General, Sales;Hard, Soft
+(ISC)2;Cybersecurity;Computer Science, DevOps, Software Engineering;IT;Hard
+Data Analysis;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Data Structures;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Forecasting;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Quantitative Analyse;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Quantitative Analysis;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Statistical Data Analysis;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Web Analyst & Developer @ Pro Web Consulting;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Web Analytics;Data Analysis;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Analysis;Data Analytics;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Analytical Skills;Analytical Skills;General;General;Soft
+SCADA;Data Collection;Data Engineering, QA;IT;Hard
+Data Engineering;Data Engineering;Data Science, Data Engineering;IT, Statistics;Hard
+Order entry;Data Entry;Computer Science, General;IT;Hard, Soft
+Master Data Management;Data Management;Data Science, Data Analytics, Data Engineering;IT, Statistics;Hard
+Data Manipulation;Data Manipulation;Data Analytics, Data Science, Software Engineering, Data Engineering;IT, Statistics;Hard
+Data Mining;Data Mining;Data Analytics, Data Science, Software Engineering;IT, Statistics;Hard
+Data Science;Data Science;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Deep Learning;Data Science;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Statistical modelling;Data Science;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Data Visualization;Data Visualization;Data Analytics, Data Science;IT, Statistics;Hard
+Design database;Database Administration;Software Engineering, Data Engineering;IT;Hard
+Relational Model;Database Administration;Software Engineering, Data Engineering;IT;Hard
+Database;Database Administration;Software Engineering, Data Engineering;IT;Hard
+Database Design;Database Administration;Software Engineering, Data Engineering;IT;Hard
+Databases;Database Administration;Software Engineering, Data Engineering;IT;Hard
+EMC Storage;Database Administration;Software Engineering, Data Engineering;IT;Hard
+Essbase;Database Administration;Software Engineering, Data Engineering;IT;Hard
+DFT Calculations;Quantum Mechanics;Data Analysis, Mathematics, Physics;Engineering, Mathematics;Hard
+Desktop Publishing;Desktop Publishing;Typography, Design;Typography, Design;Hard
+Continuous Improvement;DevOps;Software Engineering, DevOps;IT;Hard
+Infrastructure;DevOps;Software Engineering, DevOps;IT;Hard
+internet;Digital Awareness;General;General;Soft
+.com;Digital Awareness;General;General;Soft
+Digital Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Marketing Employee;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Media;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Medien;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital PR Internship;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Project Manager Account Manager @ Pro Web Consulting;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Strategy;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digital Transformation;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digitale Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Digitales Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Direct Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Integrated marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+International Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Online Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+SEM;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Search Engine Marketing (SEM);Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Search Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Stagiaire Online Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Web Marketing;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+search engine advertising;Digital Marketing;Marketing;Marketing, Design;Hard, Soft
+Django;Django;Software Engineering;IT;Hard
+Dreamweaver;Dreamweaver;Design, SEO, UX;IT;Hard
+E-Commerce;E-Commerce Management;Marketing;Marketing;Hard, Soft
+E-Commerce Consultant;E-Commerce Management;Marketing;Marketing;Hard, Soft
+E-Commerce SEO;E-Commerce Management;Marketing;Marketing;Hard, Soft
+E-business;E-Commerce Management;Marketing;Marketing;Hard, Soft
+eCommerce;E-Commerce Management;Marketing;Marketing;Hard, Soft
+E-Mail-Marketing;E-Mail Marketing;Marketing;Marketing;Hard, Soft
+Email Marketing;E-Mail Marketing;Marketing;Marketing;Hard, Soft
+Marketing via e-mail;E-Mail Marketing;Marketing;Marketing;Hard, Soft
+Newsletter;E-Mail Marketing;Marketing;Marketing;Hard, Soft
+Newsletter Design;Graphic Design;Design, Art, Modeling;Design;Hard
+Eclipse;IDE;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Econometrics;Economics;Economics;Economics;Hard
+Economics;Economics;Economics;Economics;Hard
+Economy and Management;Economics;Economics;Economics;Hard
+Electrochemical Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Polymer Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Protein Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Solid State Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Thin Film Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Waste Characterization;Electrochemical Characterization;Chemistry, Research, Electronics;Research;Hard
+Electronics;Electronics;Electronics;Electronics;Hard
+Energy Efficiency;Energy Management;Sustainability;Environment, Sustainability;Hard
+Engenharia;Engineering;Engineering;Design;Hard
+Engineering;Engineering;Engineering;Design;Hard
+Engineering Design;Engineering;Engineering;Design;Hard
+English;English;General;General, Languages;Soft
+English language;English;General;General, Languages;Soft
+Inglês;English;General;General, Languages;Soft
+Lingua inglese;English;General;General, Languages;Soft
+Corporate Entrepreneurship;Entrepreneurship;General;General;Soft
+Entrepreneurship;Entrepreneurship;General;General;Soft
+Go-to-market;Sales;Sales;Sales;Hard, Soft
+Owner of the company;Entrepreneurship;General;General;Soft
+Start-ups;Entrepreneurship;General;General;Soft
+Startup companies;Entrepreneurship;General;General;Soft
+Atmospheric Chemistry;Environmental Chemistry;Chemistry, Research, Sustainability;Research;Hard
+Environmental Chemistry;Environmental Chemistry;Chemistry, Research, Sustainability;Research;Hard
+Green Chemistry;Environmental Chemistry;Chemistry, Research, Sustainability;Research;Hard
+Heterocyclic Chemistry;Environmental Chemistry;Chemistry, Research, Sustainability;Research;Hard
+Soil Chemistry;Environmental Chemistry;Chemistry, Research, Sustainability;Research;Hard
+ERP;ERP;Operations;General;Hard, Soft
+Corporate Social Responsibility;Work Ethic;General;General;Soft
+Facebook;Social Media Marketing;Marketing;Marketing;Hard, Soft
+Fashion;Apparel and Fashion Design;Fashion;Fashion;Soft, Hard
+Figma;Figma;Design, Art, Modeling;Design;Hard
+Adobe Figma;Adobe Figma;Design, Art, Modeling;Design;Hard
+Financial Analysis;Financial Analysis;Data Analytics, Finance;IT, Statistics, Finance;Hard
+Financial Forecasting;Financial Analysis;Data Analytics, Finance;IT, Statistics, Finance;Hard
+Financial Modeling;Financial Analysis;Data Analytics, Finance;IT, Statistics, Finance;Hard
+Financial Reporting;Financial Analysis;Data Analytics, Finance;IT, Statistics, Finance;Hard
+Finanzanalyse;Financial Analysis;Data Analytics, Finance;IT, Statistics, Finance;Hard
+financial services;Financial Services;Finance;Finance;Hard
+100% Financing;Financial Services;Finance;Finance;Hard
+Fleet and Network maintenance Responsible;Fleet Maintenance;Maintenance;Automotives, Engineering;Hard
+FMCG;FMCG;Logistics, Sales;Logistics, Sales;Hard, Soft
+Fast-Moving Consumer Goods (FMCG);FMCG;Logistics, Sales;Logistics, Sales;Hard, Soft
+Food;Culinary Arts and Professional Cooking;Food and Beverages;Food Industry;Hard, Soft
+Luxury Foods;Culinary Arts and Professional Cooking;Food and Beverages;Food Industry;Hard, Soft
+Flavor Chemistry;Food Science;Chemistry, Research, Food;Research;Hard
+Food Chemistry;Food Science;Chemistry, Research, Food;Research;Hard
+French;French;General;General, Languages;Soft
+Front End Developer;Frontend Development;Software Engineering;IT;Hard
+Bootstrap;Frontend Development;Software Engineering;IT;Hard
+Front end SEO & Analytics developer;Frontend Development;Software Engineering;IT;Hard
+Full-Stack Development;Full-Stack Development;Software Engineering;IT;Hard
+Galileo;Galileo;Design, Product Management, Engineering, UX;Design;Hard
+Gaussian 16;Gaussian;Chemistry, Research;Research;Hard
+GaussView;GaussView;Chemistry, Research;Research;Hard
+German;German;General;General, Languages;Soft
+German language;German;General;General, Languages;Soft
+GIMP;GIMP;Design, Art, Modeling;Design;Hard
+Git;Git;Computer Science, DevOps, Software Engineering;IT;Hard
+Google Ads;Google Ads;Marketing;Marketing;Hard, Soft
+Google Adwords;Advertising;Marketing;Marketing;Hard, Soft
+Google Adwords Fundamentals;Advertising;Marketing;Marketing;Hard, Soft
+Google Adwords Professional;Advertising;Marketing;Marketing;Hard, Soft
+Google Analytics;Google Analytics;Data Analytics;IT, Statistics;Hard
+GA;Google Analytics;Data Analytics;IT, Statistics;Hard
+Google Cloud Platform (GCP);Google Cloud Platform;Data Analytics, Data Science, Software Engineering;IT, Statistics;Hard
+Google Data Studio;Google Data Studio;Data Analytics;IT;Hard
+GTM;Google Tag Manager;Data Analytics;IT;Hard
+Google Tag Manager;Google Tag Manager;Data Analytics;IT;Hard
+GOOGLE Webmaster Tools;Google Webmaster Tools;SEO, Marketing;Marketing;Hard, Soft
+Strumenti per in the Webmaster di Google;Google Webmaster Tools;SEO, Marketing;Marketing;Hard, Soft
+Google+;Google+;Marketing;Marketing;Hard, Soft
+Graphic design;Graphic Design;Design, Art, Modeling;Design;Hard
+Sketching;Graphic Design;Design, Art, Modeling;Design;Hard
+Model Making;Graphic Design;Design, Art, Modeling;Design;Hard
+Illustration;Graphic Design;Design, Art, Modeling;Design;Hard
+Visual Communication;Graphic Design;Design, Art, Modeling;Design;Hard
+Drawing;Graphic Design;Design, Art, Modeling;Design;Hard
+Animator;Graphic Design;Design, Art, Modeling;Design;Hard
+Graphics;Graphic Design;Design, Art, Modeling;Design;Hard
+Graphics Design;Graphic Design;Design, Art, Modeling;Design;Hard
+Visual Arts;Graphic Design;Design, Art, Modeling;Design;Hard
+Web Design;Web Design;Design, Product Management, Engineering, UX;Design;Hard
+Health and safety at work;Health and Safety;Safety, Prevention;General, Healthcare;Hard, Soft
+Ohsas 18001;OHSAS 18001;Safety, Prevention;General, Healthcare;Hard, Soft
+Salute e sicurezza sul lavoro;Health and Safety;Safety, Prevention;General, Healthcare;Hard, Soft
+Social Security and Health Insurance Law;Healthcare Administration and Management;Safety, Prevention, Legal;General, Healthcare;Hard, Soft
+HR Metrics;HR Analytics;HR;HR;Hard
+HTML;HTML;Software Engineering;IT;Hard
+Industrial Design;Industrial Design;Design, Product Management, Engineering, UX;Design;Hard
+Industrial Engineering;Industrial Engineering;Design, Product Management, Engineering, UX;Design;Hard
+Industrial Maintenance;Industrial Engineering;Design, Product Management, Engineering, UX;Design;Hard
+Autonomy and Initiative;Proactivity;General;General;Soft
+Instagram;Social Media Marketing;Marketing;Marketing;Hard, Soft
+Interaction Design;Interaction Design;Design, Product Management, Engineering, UX;Design;Hard
+Inventory Officer;Inventory Management;General, Logistics;Logistics, Sales;Hard
+Stock Management;Inventory Management;General, Logistics;Logistics, Sales;Hard
+Storage;Inventory Management;General, Logistics;Logistics, Sales;Hard
+ISO 14001;ISO 14001;Sustainability, Prevention, Safety;Environment, Sustainability;Hard
+ISO;ISO 14001;Sustainability, Prevention, Safety;Environment, Sustainability;Hard
+IT Management;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+IT Operations;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+IT Project Management;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+IT Service Management;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+IT Strategies;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+ITIL;IT Operations & Management;Computer Science, DevOps, Software Engineering;IT;Hard
+Italian;Italian;General;General, Languages;Soft
+Italian language;Italian;General;General, Languages;Soft
+Java;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Embedded Java;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java API;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java AWT;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Applets;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Architecture for XML Binding (JAXB);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Certified Programmer;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Concurrency;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Database Connectivity (JDBC);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Enterprise Architecture;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Enterprise Edition;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Frameworks;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Message Service (JMS);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Naming and Directory Interface (JNDI);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Native Interface (JNI);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Performance;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java RMI;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Security;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Swing;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Virtual Machine (JVM);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Web Server;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Web Services;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java Web Start;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java2D;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Java3D;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaBeans;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaCC;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaCard;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaFX;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaMail;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaSE;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaServer Faces (JSF);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaServer Pages (JSP);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+JavaServer Pages Standard Tag Library (JSTL);Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Javadoc;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Sun Certified Java Programmer;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Sun Java;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Sun Java System Web Server;Java;Data Analytics, Data Science, Software Engineering, Data Engineering;IT;Hard
+Javascript;JavaScript;Software Engineering;IT;Hard
+JavaScript Frameworks;JavaScript;Software Engineering;IT;Hard
+JavaScript Libraries;JavaScript;Software Engineering;IT;Hard
+JavaScriptMVC;JavaScript;Software Engineering;IT;Hard
+Unobtrusive Javascript;JavaScript;Software Engineering;IT;Hard
+Joomla;Joomla;Copywriting, Digital Marketing, Software Engineering;IT;Hard, Soft
+Journalism;Journalism;General, Communication;General, Communication;Hard, Soft
+Kaizen;Kaizen;Sales;Sales;Hard, Soft
+Keyword Research;Keyword Research;Marketing, SEO;Marketing;Hard, Soft
+KNIME;KNIME;Data Analytics, Data Science;IT, Statistics;Hard
+LaTeX;LaTeX;Computer Science;IT;Hard
+Demand Generation;Lead Generation;Marketing;Marketing;Hard, Soft
+Lead Generation;Lead Generation;Marketing;Marketing;Hard, Soft
+Lead Management;Lead Generation;Marketing;Marketing;Hard, Soft
+Cross-functional Team Leadership;Team Management;General;Communication;Hard, Soft
+Leadership;Leadership;General;Communication;Soft
+Leadership;Leadership;General;Communication;Soft
+Leadership Development;Leadership;General;Communication;Soft
+Team Leadership;Team Management;General;Communication;Hard, Soft
+Legal advice;Legal Counseling;Legal;General, Legal;Hard
+Privacy Act;Data Privacy Compliance and Regulations Law;Legal;General, Legal;Hard
+Legal consulenza;Legal Counseling;Legal;General, Legal;Hard
+Privacy Protection;Data Privacy Compliance and Regulations Law;Legal;General, Legal;Hard
+Procedural Tax Law;Tax Analyst;Accounting, Finance, Operations;General, Legal;Hard
+Tax;Tax Analyst;Accounting, Finance, Operations;General, Legal;Hard
+Tax Advisory;Tax Analyst;Accounting, Finance, Operations;General, Legal;Hard
+Tax Law;Tax Analyst;Accounting, Finance, Operations;General, Legal;Hard
+auxiliary workers;Corporate and Business Law;Legal;General, Legal;Hard
+Link Building;Link Building;Marketing, SEO;Marketing;Hard, Soft
+LinkedIn Sales Navigator;LinkedIn Sales Navigator;Customer Relationship Management, Data Analytics, HR;Sales, HR;Hard, Soft
+Embedded Linux;Linux;Computer Science, DevOps, Software Engineering;IT;Hard
+GNU/Linux;Linux;Computer Science, DevOps, Software Engineering;IT;Hard
+Linux;Linux;Computer Science, DevOps, Software Engineering;IT;Hard
+Unix;Linux;Computer Science, DevOps, Software Engineering;IT;Hard
+Machine Learning;Machine Learning;Data Science, Data Analytics;IT, Statistics;Hard
+MacroModel;MacroModel;Biology, Chemistry, Physics;Research;Hard
+Maestro;Maestro;Project Management;General;Hard
+Mailchimp;Mailchimp;Marketing;Marketing;Hard, Soft
+Corrective Maintenance;Maintenance;General;General;Soft
+Maintenance & Repair;Maintenance;General;General;Soft
+Maintenance Engineering;Maintenance;General;General;Soft
+Maintenance Planning;Maintenance;General;General;Soft
+Preventive Maintenance;Maintenance;General;General;Soft
+Service Parts;Maintenance;General;General;Soft
+Spare Parts;Maintenance;General;General;Soft
+Valves;Maintenance;General;General;Soft
+Vehicles;Maintenance;General;General;Soft
+Management;Management;General;General;Soft
+Management Consulting;Management;General;General;Soft
+Management Program;Management;General;General;Soft
+Manufacturing;Manufacturing;Industrial Engineering, General;General, Engineering;Hard
+Manufacturing execution systems;Manufacturing;Industrial Engineering, General;General, Engineering;Hard
+Market Analysis;Market Research;Data Analytics;IT;Hard
+Market Engineer;Market Research;Data Analytics;IT;Hard
+Market Entry;Market Research;Data Analytics;IT;Hard
+Market Research;Market Research;Data Analytics;IT;Hard
+Marktanalyse;Market Research;Data Analytics;IT;Hard
+Verkaufsanalyse;Market Research;Data Analytics;IT;Hard
+Marketing strategy;Marketing Management;Marketing;Marketing;Hard, Soft
+Marketing;Marketing Management;Marketing;Marketing;Hard, Soft
+App Marketing;Marketing Management;Marketing;Marketing;Hard, Soft
+Market management;Marketing Management;Marketing;Marketing;Hard, Soft
+Marketing Communications;Marketing Management;Marketing;Marketing;Hard, Soft
+Marketing Management;Marketing Management;Marketing;Marketing;Hard, Soft
+Marketing and Sales;Marketing Management;Marketing;Marketing;Hard, Soft
+Marketingkommunikation;Marketing Management;Marketing;Marketing;Hard, Soft
+Pricing;Marketing Management;Marketing;Marketing;Hard, Soft
+Pricing Strategy;Marketing Management;Marketing;Marketing;Hard, Soft
+Strategia in marketing;Marketing Management;Marketing;Marketing;Hard, Soft
+Trainee Marketing & Communication;Marketing Management;Marketing;Marketing;Hard, Soft
+Transfer Pricing;Marketing Management;Marketing;Marketing;Hard, Soft
+1-to-1 Marketing;Marketing Management;Marketing;Marketing;Hard, Soft
+Marvelapp;Marvelapp;Design, Art, Modeling;Design;Hard
+Mathematics;Mathematics;Mathematics;Research;Hard
+Matlab;Matlab;Data Analytics, Data Science, Data Engineering;IT, Statistics;Hard
+Automotive Engineering;Mechanical Engineering;Engineering;Design, Engineering;Hard
+Mechanical Engineering;Mechanical Engineering;Engineering;Design, Engineering;Hard
+Prognosis;Medical Advice;Medical, Pharmaceuticals;Healthcare;Hard
+Clinical Chemistry;Medicinal Chemistry;Chemistry, Research, Medical;Research;Hard
+Medicinal Chemistry;Medicinal Chemistry;Chemistry, Research, Medical;Research;Hard
+Merchandising;Merchandising;Marketing;Marketing;Hard, Soft
+Mergers & Acquisitions;Mergers & Acquisitions;Operations, Legal;Legal;Hard, Soft
+MES;MES;HR;HR, Legal;Hard
+Microcontrollers;Microcontrollers;Computer Science, Software Engineering, Electronics;IT, Electronics, Engineering;Hard
+Microsoft Access;Microsoft Access;Operations;General;Hard, Soft
+Microsoft Excel;Microsoft Excel;Operations;General;Hard, Soft
+Excel models;Microsoft Excel;Operations;General;Hard, Soft
+Microsoft Office;Microsoft Office;Operations;General;Hard, Soft
+MS Office (Word, Excel, PowerPoint, Acess);Microsoft Office;Operations;General;Hard, Soft
+MS Office (Word Excel Powerpoint Acess);Microsoft Office;Operations;General;Hard, Soft
+MS Project;Microsoft Office;Operations;General;Hard, Soft
+Microsoft Office Publisher;Microsoft Office;Operations;General;Hard, Soft
+Microsoft nologies;Microsoft Office;Operations;General;Hard, Soft
+Office 365;Microsoft Office;Operations;General;Hard, Soft
+Pack Office;Microsoft Office;Operations;General;Hard, Soft
+Microsoft Outlook;Microsoft Outlook;Operations;General;Hard, Soft
+Microsoft Power BI;Microsoft Power BI;Data Analytics;IT, Statistics;Hard
+Microsoft PowerPoint;Microsoft PowerPoint;Operations;General;Hard, Soft
+Powerpoint;Microsoft PowerPoint;Operations;General;Hard, Soft
+Presentations;Microsoft Powerpoint;Operations;General;Hard, Soft
+Microsoft SQL Server;Microsoft SQL Server;Data Analytics, Software Engineering;IT, Statistics;Hard
+Microsoft Windows;Microsoft Windows;General;General;Hard, Soft
+Windows;Microsoft Windows;General;General;Hard, Soft
+Windows 7;Microsoft Windows;General;General;Hard, Soft
+Microsoft Word;Microsoft Word;Operations;General;Hard, Soft
+MestRenova (Mnova);Mnova;Chemistry;Research;Hard
+Mobile Advertising;Advertising;Marketing;Marketing;Hard, Soft
+Mobile Applications;Mobile Applications;General;General;Soft
+Mobile Devices Development;Mobile Devices Development;General;General;Soft
+Mobile Marketing;Mobile Marketing;Marketing;Marketing;Hard, Soft
+Music;Music;Music;Music;Hard, Soft
+music industry;Music;Music;Music;Hard, Soft
+Music Publishing;Music Publishing;Music;Music;Hard, Soft
+Negotiation;Negotiation;Sales;Negotiation, Communication, Sales;Hard, Soft
+Network Administration;Network Administration;Computer Science;IT;Hard
+100-105;Network Administration;Computer Science;IT;Hard
+Contract Management;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Contract Negotiation;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Contract activation;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+First Level Support Contracts;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+New Business Development;New Business;Sales;Sales;Hard, Soft
+nielsen;Nielsen Media;Data Analytics;IT;Hard
+NoSQL;NoSQL;Software Engineering, Data Engineering;IT;Hard
+Nuclear Chemistry;Nuclear Chemistry;Chemistry, Research;Research;Hard
+Online Research;Online Research;General;General;Hard, Soft
+Operational Turnaround;Operations Management;Operations;Operations;Hard, Soft
+Operations Management;Operations Management;Operations;Operations;Hard, Soft
+Succession Planning;Operations Management;Operations;Operations;Hard, Soft
+Oracle E-Business Suite;Oracle E-Business Suite;Data Engineering, Software Engineering;IT;Hard
+Oracle SQL Developer;Oracle SQL Developer;Data Engineering, Software Engineering;IT;Hard
+order processing;Order Processing;Operations;General;Hard, Soft
+Organic Synthesis;Organic Synthesis;Biology, Chemistry, Physics;Research;Hard
+Organization Skills;Organizational Skills;General;General;Soft
+Packaging;Packaging;Logistics, Sales;Logistics, Sales;Hard, Soft
+Pandas;Pandas;Data Analytics, Data Science, Data Engineering;IT;Hard
+Compensation;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Compensation & Benefits;Benefits Administration;HR;HR;Hard
+Development of human resources;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Employee Engagement;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Employee Learning & Development;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Employee Relations;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Employee Training;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Employment Law;Labor Law Supervision;Legal;Legal;Hard
+Event Management;Event Planning;General, Operations;General, Operations;Hard, Soft
+Event Planning;Event Planning;General, Operations;General, Operations;Hard, Soft
+Formation;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Gestion;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Gestione team;Team Management;General;Communication;Hard, Soft
+Gestione team cross-functional;Team Management;General;Communication;Hard, Soft
+HR Consulting;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+HR Management;HR Analytics;HR;HR;Hard
+HR Organization & People Development Specialist;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+HR Policies;HR Analytics;HR;HR;Hard
+HR Strategy;HR Analytics;HR;HR;Hard
+HR specialist;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+HRIS implementation;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Holacracy;People Management;Sales, New Business, HR;Sales, HR;Hard, Soft
+Hospitality;Hospitality Customer Service;General, Management, Hospitality;Hospitality, General;Hard, Soft
+Hospitality Management;Hospitality Customer Service;General, Management, Hospitality;Hospitality, General;Hard, Soft
+Hotel Management;Hotel Management and Operations;General, Management, Hospitality;Hospitality, General;Hard, Soft
+Hotelaria;Hotel Management and Operations;General, Management, Hospitality;Hospitality, General;Hard, Soft

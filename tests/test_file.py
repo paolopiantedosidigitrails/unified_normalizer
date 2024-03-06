@@ -123,8 +123,8 @@ def test_prompt_creation_skills():
         assert prompt[:54] == "skill_raw;skill_normalized;domain;field;type_of_skill\n"
         assert prompt[-6:] == "\ntest;"
     finally:
-        utility.drop_collection("skill_idx_verified")
-        utility.drop_collection("skill_idx_candidates")
+        utility.drop_collection("skill_test_idx_verified")
+        utility.drop_collection("skill_test_idx_candidates")
 
 
 def test_LLM_call_skill():
@@ -140,8 +140,8 @@ def test_LLM_call_skill():
         assert additional_info.get('field') is not None
         assert additional_info.get('type_of_skill') is not None
     finally:
-        utility.drop_collection("skill_idx_verified")
-        utility.drop_collection("skill_idx_candidates")
+        utility.drop_collection("skill_test_idx_verified")
+        utility.drop_collection("skill_test_idx_candidates")
     
 
 def test_LLM_call_with_notes():
@@ -323,8 +323,8 @@ def test_language_normalizer():
     
         assert norm_info['score'] is None
     finally:   
-        utility.drop_collection("language_idx_verified")
-        utility.drop_collection("language_idx_candidates")
+        utility.drop_collection("language_test_idx_verified")
+        utility.drop_collection("language_test_idx_candidates")
     
 
 
@@ -385,8 +385,8 @@ def test_massive_add_skip():
         assert t2 < t
 
     finally:
-        utility.drop_collection("language_idx_verified")
-        utility.drop_collection("language_idx_candidates")
+        utility.drop_collection("language_test_idx_verified")
+        utility.drop_collection("language_test_idx_candidates")
     
 
 def test_notes():
@@ -440,8 +440,8 @@ def test_speed():
         print(f"10 normalizations in {t} seconds. single time: {t/10} seconds.")
         assert t < 10
     finally:
-        utility.drop_collection("language_idx_verified")
-        utility.drop_collection("language_idx_candidates")
+        utility.drop_collection("language_test_idx_verified")
+        utility.drop_collection("language_test_idx_candidates")
     
 
 
@@ -457,8 +457,8 @@ def test_job_role_normalizer():
         assert additional_info['function'] == 'Data Science'
         assert norm_info['type'] == "candidate_indirect_match"
     finally:
-        utility.drop_collection("job_idx_verified")
-        utility.drop_collection("job_idx_candidates")
+        utility.drop_collection("job_test_idx_verified")
+        utility.drop_collection("job_test_idx_candidates")
     
 
 def test_job_role_normalizer_with_hierarchy():
@@ -489,8 +489,8 @@ def test_job_role_normalizer_with_hierarchy():
         # assert norm == "Data Scientist"
 
     finally:
-        utility.drop_collection("job_with_hierarchy_idx_verified")
-        utility.drop_collection("job_with_hierarchy_idx_candidates")
+        utility.drop_collection("job_with_hierarchy_test_idx_verified")
+        utility.drop_collection("job_with_hierarchy_test_idx_candidates")
 
 
 def test_new_skill_normalizer():
@@ -534,8 +534,8 @@ def test_new_skill_normalizer():
         prompt = normalizer.create_prompt("test", response)
         assert prompt[:99] == 'skill_raw;observations;skill_normalized;possible_domains;possible_fields;type_of_skill;too_generic\n'
     finally:
-        utility.drop_collection("new_skill_idx_verified")
-        utility.drop_collection("new_skill_idx_candidates")
+        utility.drop_collection("new_skill_test_idx_verified")
+        utility.drop_collection("new_skill_test_idx_candidates")
         
 
 def test_batch_embeddings():
