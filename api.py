@@ -1,7 +1,8 @@
 from contextlib import asynccontextmanager
 from typing import List
 import uvicorn
-from unified_normalizer.Normalizer import SkillNormalizerOld, JobNormalizer, LanguageNormalizer, SkillNormalizerNew, JobNormalizerWithHierarchy
+from unified_normalizer.Normalizer import SkillNormalizerOld, JobNormalizer, LanguageNormalizer, \
+                                           SkillNormalizerNew, JobNormalizerWithHierarchy, CourseSkillNormalizer
 
 from fastapi import FastAPI, HTTPException
 import yaml 
@@ -46,11 +47,15 @@ async def ml_lifespan_manager(app: FastAPI):
     job_normalizer_with_hierarchy = JobNormalizerWithHierarchy()
     job_normalizer_with_hierarchy.massive_add_to_index()
 
+    course_skill_normalizer = CourseSkillNormalizer()
+    course_skill_normalizer.massive_add_to_index()
+
     ml_models["skill"] = skill_normalizer
     ml_models["job"] = job_normalizer
     ml_models["language"] = language_normalizer
     ml_models["skill_new"] = skill_normalizer_new
     ml_models["job_hierarchy"] = job_normalizer_with_hierarchy
+    ml_models["course_skill"] = course_skill_normalizer
     
     yield
     # Clean up the ML models and release the resources
@@ -207,6 +212,10 @@ if __name__ == "__main__":
 
     logging.info("Adding Job normalizer with hierarchy to the index")
     normalizer = JobNormalizerWithHierarchy()
+    normalizer.massive_add_to_index()
+
+    logging.info("Adding Course Skill normalizer to the index")
+    normalizer = CourseSkillNormalizer()
     normalizer.massive_add_to_index()
 
     uvicorn.run("api:app", host="0.0.0.0", port=int(config['PORT']))

@@ -807,6 +807,15 @@ class SkillNormalizerOld(Normalizer):
     def massive_add_to_index(self):
         return super().massive_add_to_index('data/skills_dataset.csv')
     
+class CourseSkillNormalizer(Normalizer):
+    def __init__(self, test=""):
+        super().__init__("course_skill"+test,
+                         header_raw_string="course_title",
+                         header_norm_string="tags")
+
+    def massive_add_to_index(self):
+        return super().massive_add_to_index('data/course_skill_dataset.csv')
+    
 class JobNormalizer(Normalizer):
     def __init__(self, test=""):
         super().__init__("job"+test, 
